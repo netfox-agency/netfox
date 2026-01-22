@@ -14,10 +14,10 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     description: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Validate inputs
     if (!formData.company.trim() || !formData.contact.trim() || !formData.description.trim()) {
       return;
     }
@@ -26,11 +26,10 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       setIsSubmitted(false);
       setFormData({ company: "", contact: "", description: "" });
       onClose();
-    }, 2000);
+    }, 2500);
   };
 
   const handleChange = (field: string, value: string) => {
-    // Limit input lengths for security
     const maxLengths: Record<string, number> = {
       company: 100,
       contact: 255,
@@ -45,118 +44,170 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop avec blur premium */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-xl"
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-50 bg-background/90 backdrop-blur-2xl"
             onClick={onClose}
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-6 pointer-events-none"
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none overflow-y-auto"
           >
-            <div className="relative w-full max-w-lg pointer-events-auto">
-              {/* Close button */}
-              <button
+            <div className="relative w-full max-w-md sm:max-w-lg my-auto pointer-events-auto">
+              {/* Close button - plus visible */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
                 onClick={onClose}
-                className="absolute -top-12 right-0 text-muted-foreground hover:text-foreground transition-colors duration-300"
+                className="absolute -top-14 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-300"
               >
-                <X className="w-6 h-6" strokeWidth={1} />
-              </button>
+                <X className="w-5 h-5" strokeWidth={1.5} />
+              </motion.button>
 
-              {/* Form Container */}
-              <div className="glass-surface rounded-3xl p-10 md:p-12">
+              {/* Form Container - Glassmorphism premium */}
+              <div className="glass-modal rounded-3xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10">
                 {!isSubmitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-8">
+                  <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                     {/* Header */}
-                    <div className="text-center mb-10">
-                      <h2 className="text-2xl md:text-3xl font-light tracking-tight mb-3">
+                    <div className="text-center mb-8 sm:mb-10">
+                      <motion.h2 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-2xl sm:text-3xl md:text-4xl font-extralight tracking-tight mb-3"
+                      >
                         Votre vision
-                      </h2>
-                      <p className="text-muted-foreground text-sm font-light">
+                      </motion.h2>
+                      <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="text-muted-foreground text-sm sm:text-base font-light"
+                      >
                         Parlez-nous de votre projet
-                      </p>
+                      </motion.p>
                     </div>
 
                     {/* Company Name */}
-                    <div className="space-y-2">
-                      <label className="text-xs uppercase tracking-widest text-muted-foreground font-light">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.35 }}
+                      className="space-y-2"
+                    >
+                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'company' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Société
                       </label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
+                        onFocus={() => setFocusedField('company')}
+                        onBlur={() => setFocusedField(null)}
                         placeholder="Nom de votre entreprise"
                         required
                         maxLength={100}
-                        className="w-full bg-transparent border-b border-border/50 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-foreground/50 transition-colors duration-300 font-light"
+                        className="w-full bg-transparent border-b-2 border-border/30 py-3 sm:py-4 text-foreground text-base sm:text-lg placeholder:text-muted-foreground/30 focus:outline-none focus:border-foreground/60 transition-all duration-500 font-light"
                       />
-                    </div>
+                    </motion.div>
 
                     {/* Contact */}
-                    <div className="space-y-2">
-                      <label className="text-xs uppercase tracking-widest text-muted-foreground font-light">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="space-y-2"
+                    >
+                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'contact' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Contact
                       </label>
                       <input
                         type="text"
                         value={formData.contact}
                         onChange={(e) => handleChange("contact", e.target.value)}
+                        onFocus={() => setFocusedField('contact')}
+                        onBlur={() => setFocusedField(null)}
                         placeholder="Email ou téléphone"
                         required
                         maxLength={255}
-                        className="w-full bg-transparent border-b border-border/50 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-foreground/50 transition-colors duration-300 font-light"
+                        className="w-full bg-transparent border-b-2 border-border/30 py-3 sm:py-4 text-foreground text-base sm:text-lg placeholder:text-muted-foreground/30 focus:outline-none focus:border-foreground/60 transition-all duration-500 font-light"
                       />
-                    </div>
+                    </motion.div>
 
                     {/* Description */}
-                    <div className="space-y-2">
-                      <label className="text-xs uppercase tracking-widest text-muted-foreground font-light">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.45 }}
+                      className="space-y-2"
+                    >
+                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'description' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Votre projet
                       </label>
                       <textarea
                         value={formData.description}
                         onChange={(e) => handleChange("description", e.target.value)}
+                        onFocus={() => setFocusedField('description')}
+                        onBlur={() => setFocusedField(null)}
                         placeholder="Décrivez brièvement votre vision..."
                         required
                         maxLength={1000}
-                        rows={4}
-                        className="w-full bg-transparent border-b border-border/50 py-3 text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-foreground/50 transition-colors duration-300 font-light resize-none"
+                        rows={3}
+                        className="w-full bg-transparent border-b-2 border-border/30 py-3 sm:py-4 text-foreground text-base sm:text-lg placeholder:text-muted-foreground/30 focus:outline-none focus:border-foreground/60 transition-all duration-500 font-light resize-none"
                       />
-                    </div>
+                    </motion.div>
 
-                    {/* Submit Button */}
-                    <div className="pt-6">
+                    {/* Submit Button Premium */}
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="pt-4 sm:pt-6"
+                    >
                       <button
                         type="submit"
-                        className="w-full py-4 rounded-full bg-foreground text-background font-light text-sm tracking-widest uppercase transition-all duration-500 hover:bg-foreground/90"
+                        className="w-full py-4 sm:py-5 rounded-2xl bg-foreground text-background font-medium text-sm sm:text-base tracking-wide transition-all duration-500 hover:bg-foreground/90 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.2)] active:scale-[0.98]"
                       >
                         Soumettre ma candidature
                       </button>
-                    </div>
+                    </motion.div>
                   </form>
                 ) : (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-16"
+                    className="text-center py-12 sm:py-16"
                   >
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border border-foreground/20 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 13l4 4L19 7" />
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", duration: 0.6 }}
+                      className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#8B1E3F]/20 to-transparent border border-[#8B1E3F]/30 flex items-center justify-center"
+                    >
+                      <svg className="w-7 h-7 sm:w-8 sm:h-8 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <motion.path 
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M5 13l4 4L19 7" 
+                        />
                       </svg>
-                    </div>
-                    <h3 className="text-xl font-light mb-2">Merci</h3>
-                    <p className="text-muted-foreground text-sm font-light">
+                    </motion.div>
+                    <h3 className="text-xl sm:text-2xl font-light mb-2">Merci</h3>
+                    <p className="text-muted-foreground text-sm sm:text-base font-light">
                       Nous vous recontacterons sous 24h.
                     </p>
                   </motion.div>
