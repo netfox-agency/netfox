@@ -31,27 +31,27 @@ const Index = () => {
           className="mb-14"
         >
           <svg 
-            viewBox="0 0 60 140" 
-            className="w-8 h-[70px]"
+            viewBox="0 0 100 220" 
+            className="w-10 h-[88px]"
             fill="none"
           >
-            {/* Tie knot - diamond/rhombus shape */}
+            {/* Tie knot - diamond shape rotated */}
             <path 
-              d="M30 0 L42 15 L30 30 L18 15 Z" 
-              fill="#8B1E1E"
+              d="M50 8 L62 28 L50 48 L38 28 Z" 
+              fill="#8B1F1F"
             />
-            {/* Tie body - curved elegant shape with pointed end */}
+            {/* Tie body - organic curved shape matching the original */}
             <path 
-              d="M22 30 
-                 Q20 45 22 60 
-                 Q24 80 28 100 
-                 L30 130 
-                 L32 100 
-                 Q36 80 38 60 
-                 Q40 45 38 30 
-                 Q34 35 30 38 
-                 Q26 35 22 30 Z" 
-              fill="#8B1E1E"
+              d="M42 48 
+                 C38 55 36 70 38 90
+                 C40 110 44 140 48 170
+                 L50 210
+                 L52 170
+                 C56 140 60 110 62 90
+                 C64 70 62 55 58 48
+                 C54 52 50 54 50 54
+                 C50 54 46 52 42 48 Z" 
+              fill="#8B1F1F"
             />
           </svg>
         </motion.div>
