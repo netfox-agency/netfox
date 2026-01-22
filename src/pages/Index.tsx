@@ -1,7 +1,16 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
-import netfoxLogo from "@/assets/logo-netfox.webp";
+
+// Logo Netfox en SVG inline - cravate bordeaux
+const NetfoxLogo = () => (
+  <svg width="48" height="92" viewBox="0 0 48 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Noeud losange */}
+    <path d="M24 0L32 10L24 20L16 10L24 0Z" fill="#8B1E3F"/>
+    {/* Corps de la cravate */}
+    <path d="M20 18L28 18L30 50L24 92L18 50L20 18Z" fill="#8B1E3F"/>
+  </svg>
+);
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,13 +40,7 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-14"
         >
-          <img
-            src={netfoxLogo}
-            alt="Logo Netfox"
-            className="h-[92px] w-auto select-none"
-            draggable={false}
-            loading="eager"
-          />
+          <NetfoxLogo />
         </motion.div>
 
         {/* Main Title */}
