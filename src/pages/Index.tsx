@@ -1,6 +1,10 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import ContactModal from "@/components/ContactModal";
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Liquid Glass Background Orbs */}
@@ -19,16 +23,29 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
-        {/* Logo Mark */}
+        {/* Logo - Tie Icon */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-12"
         >
-          <div className="w-16 h-16 rounded-2xl glass-surface flex items-center justify-center">
-            <span className="text-2xl font-medium text-foreground/90">N</span>
-          </div>
+          <svg 
+            viewBox="0 0 100 200" 
+            className="w-12 h-24"
+            fill="none"
+          >
+            {/* Tie knot */}
+            <path 
+              d="M50 10 L65 25 L50 40 L35 25 Z" 
+              fill="#8B1A1A"
+            />
+            {/* Tie body */}
+            <path 
+              d="M42 40 L50 160 L58 40 Z" 
+              fill="#8B1A1A"
+            />
+          </svg>
         </motion.div>
 
         {/* Main Title */}
@@ -48,30 +65,23 @@ const Index = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="text-muted-foreground text-base sm:text-lg font-light tracking-wide max-w-md"
         >
-          Agence digitale de luxe. Sites web d'exception.
+          Maison digitale de luxe. Sites web d'exception.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-16"
         >
-          <a
-            href="mailto:contact@netfox.studio"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full glass-surface text-foreground/80 hover:text-foreground transition-colors duration-500"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="group relative overflow-hidden px-10 py-5 rounded-full bg-foreground text-background font-light text-sm tracking-widest uppercase transition-all duration-700 hover:tracking-[0.3em]"
           >
-            <span className="text-sm font-light tracking-wide">Démarrer un projet</span>
-            <svg 
-              className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+            <span className="relative z-10">Collaborer</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground via-muted-foreground to-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          </button>
         </motion.div>
       </main>
 
@@ -96,6 +106,9 @@ const Index = () => {
           </div>
         </div>
       </motion.footer>
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
