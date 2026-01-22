@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
+import netfoxLogo from "@/assets/logo-netfox.png";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,37 +24,20 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
-        {/* Logo - Exact tie shape from the image */}
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-14"
         >
-          <svg 
-            viewBox="0 0 100 220" 
-            className="w-10 h-[88px]"
-            fill="none"
-          >
-            {/* Tie knot - diamond shape rotated */}
-            <path 
-              d="M50 8 L62 28 L50 48 L38 28 Z" 
-              fill="#8B1F1F"
-            />
-            {/* Tie body - organic curved shape matching the original */}
-            <path 
-              d="M42 48 
-                 C38 55 36 70 38 90
-                 C40 110 44 140 48 170
-                 L50 210
-                 L52 170
-                 C56 140 60 110 62 90
-                 C64 70 62 55 58 48
-                 C54 52 50 54 50 54
-                 C50 54 46 52 42 48 Z" 
-              fill="#8B1F1F"
-            />
-          </svg>
+          <img
+            src={netfoxLogo}
+            alt="Logo Netfox"
+            className="h-[92px] w-auto select-none"
+            draggable={false}
+            loading="eager"
+          />
         </motion.div>
 
         {/* Main Title */}
@@ -76,7 +60,7 @@ const Index = () => {
           Maison digitale de luxe. Sites web d'exception.
         </motion.p>
 
-        {/* CTA Button - Apple Style, visible and elegant */}
+        {/* CTA Button - Apple style, very visible */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,7 +69,7 @@ const Index = () => {
         >
           <button
             onClick={() => setIsModalOpen(true)}
-            className="group relative px-8 py-4 rounded-full bg-foreground text-background font-normal text-[15px] tracking-wide transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.98]"
+            className="cta-wow group relative px-10 py-4 rounded-full bg-foreground text-background font-normal text-[15px] tracking-wide transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="relative z-10">Créer votre projet</span>
             
