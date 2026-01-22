@@ -23,27 +23,35 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
-        {/* Logo - Tie Icon (reproducing the exact shape from the image) */}
+        {/* Logo - Exact tie shape from the image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mb-12"
+          className="mb-14"
         >
           <svg 
-            viewBox="0 0 80 180" 
-            className="w-10 h-20"
+            viewBox="0 0 60 140" 
+            className="w-8 h-[70px]"
             fill="none"
           >
-            {/* Tie knot - diamond shape */}
+            {/* Tie knot - diamond/rhombus shape */}
             <path 
-              d="M40 0 L55 20 L40 40 L25 20 Z" 
-              fill="#8B1A1A"
+              d="M30 0 L42 15 L30 30 L18 15 Z" 
+              fill="#8B1E1E"
             />
-            {/* Tie body - elegant tapered shape */}
+            {/* Tie body - curved elegant shape with pointed end */}
             <path 
-              d="M32 40 L40 170 L48 40 Q44 50 40 55 Q36 50 32 40 Z" 
-              fill="#8B1A1A"
+              d="M22 30 
+                 Q20 45 22 60 
+                 Q24 80 28 100 
+                 L30 130 
+                 L32 100 
+                 Q36 80 38 60 
+                 Q40 45 38 30 
+                 Q34 35 30 38 
+                 Q26 35 22 30 Z" 
+              fill="#8B1E1E"
             />
           </svg>
         </motion.div>
@@ -68,7 +76,7 @@ const Index = () => {
           Maison digitale de luxe. Sites web d'exception.
         </motion.p>
 
-        {/* CTA Button - Art Digital Style */}
+        {/* CTA Button - Apple Style, visible and elegant */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,34 +85,13 @@ const Index = () => {
         >
           <button
             onClick={() => setIsModalOpen(true)}
-            className="group relative"
+            className="group relative px-8 py-4 rounded-full bg-foreground text-background font-normal text-[15px] tracking-wide transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] active:scale-[0.98]"
           >
-            {/* Animated border gradient */}
-            <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-sm" />
+            <span className="relative z-10">Créer votre projet</span>
             
-            {/* Main button */}
-            <div className="relative overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.02]">
-              {/* Shimmer effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
-              
-              <div className="relative flex items-center gap-5 px-7 py-4">
-                <span className="text-[13px] font-light tracking-[0.15em] text-foreground/70 group-hover:text-foreground transition-colors duration-500">
-                  Créer votre projet
-                </span>
-                
-                {/* Arrow circle */}
-                <div className="relative w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center overflow-hidden group-hover:border-white/25 transition-all duration-500">
-                  <div className="absolute inset-0 bg-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <svg 
-                    className="relative w-3.5 h-3.5 text-foreground/50 group-hover:text-foreground transition-all duration-500 group-hover:translate-x-0.5" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </div>
+            {/* Subtle shine effect */}
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
             </div>
           </button>
         </motion.div>
