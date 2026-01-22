@@ -1,22 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
-import NetfoxLogo from "@/assets/NetfoxLogo";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden bg-background">
-      {/* Logo en haut à gauche */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute top-0 left-0 z-20 p-6 sm:p-8 md:p-10"
-      >
-        <NetfoxLogo className="h-12 sm:h-14 md:h-16 w-auto" />
-      </motion.header>
 
       {/* Liquid Glass Background Orbs */}
       <div 
