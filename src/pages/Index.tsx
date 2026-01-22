@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
-import netfoxLogo from "@/assets/logo-netfox.png";
+import NetfoxLogo from "@/assets/NetfoxLogo";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,13 +31,7 @@ const Index = () => {
           transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="mb-14"
         >
-          <img
-            src={netfoxLogo}
-            alt="Logo Netfox"
-            className="h-24 w-auto select-none"
-            draggable={false}
-            loading="eager"
-          />
+          <NetfoxLogo className="h-24 w-auto" />
         </motion.div>
 
         {/* Main Title */}
