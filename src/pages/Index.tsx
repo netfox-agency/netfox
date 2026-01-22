@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import ContactModal from "@/components/ContactModal";
-import netfoxLogo from "@/assets/logo-netfox.png";
+import netfoxLogo from "@/assets/logo-netfox.webp";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
