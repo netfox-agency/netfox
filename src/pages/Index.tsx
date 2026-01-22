@@ -23,7 +23,7 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
-        {/* Logo - Tie Icon */}
+        {/* Logo - Tie Icon (reproducing the exact shape from the image) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -31,18 +31,18 @@ const Index = () => {
           className="mb-12"
         >
           <svg 
-            viewBox="0 0 100 200" 
-            className="w-12 h-24"
+            viewBox="0 0 80 180" 
+            className="w-10 h-20"
             fill="none"
           >
-            {/* Tie knot */}
+            {/* Tie knot - diamond shape */}
             <path 
-              d="M50 10 L65 25 L50 40 L35 25 Z" 
+              d="M40 0 L55 20 L40 40 L25 20 Z" 
               fill="#8B1A1A"
             />
-            {/* Tie body */}
+            {/* Tie body - elegant tapered shape */}
             <path 
-              d="M42 40 L50 160 L58 40 Z" 
+              d="M32 40 L40 170 L48 40 Q44 50 40 55 Q36 50 32 40 Z" 
               fill="#8B1A1A"
             />
           </svg>
@@ -68,7 +68,7 @@ const Index = () => {
           Maison digitale de luxe. Sites web d'exception.
         </motion.p>
 
-        {/* CTA Button */}
+        {/* CTA Button - Art Digital Style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,10 +77,35 @@ const Index = () => {
         >
           <button
             onClick={() => setIsModalOpen(true)}
-            className="group relative overflow-hidden px-10 py-5 rounded-full bg-foreground text-background font-light text-sm tracking-widest uppercase transition-all duration-700 hover:tracking-[0.3em]"
+            className="group relative"
           >
-            <span className="relative z-10">Collaborer</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground via-muted-foreground to-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Animated border gradient */}
+            <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-sm" />
+            
+            {/* Main button */}
+            <div className="relative overflow-hidden rounded-full border border-white/[0.08] bg-white/[0.02]">
+              {/* Shimmer effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+              
+              <div className="relative flex items-center gap-5 px-7 py-4">
+                <span className="text-[13px] font-light tracking-[0.15em] text-foreground/70 group-hover:text-foreground transition-colors duration-500">
+                  Créer votre projet
+                </span>
+                
+                {/* Arrow circle */}
+                <div className="relative w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center overflow-hidden group-hover:border-white/25 transition-all duration-500">
+                  <div className="absolute inset-0 bg-white/[0.03] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <svg 
+                    className="relative w-3.5 h-3.5 text-foreground/50 group-hover:text-foreground transition-all duration-500 group-hover:translate-x-0.5" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </button>
         </motion.div>
       </main>
@@ -100,8 +125,8 @@ const Index = () => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="mailto:contact@netfox.studio" className="link-underline font-light hover:text-foreground/80 transition-colors">
-              contact@netfox.studio
+            <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors">
+              contact@netfox-agency.com
             </a>
           </div>
         </div>
