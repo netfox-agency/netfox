@@ -12,12 +12,12 @@ const Index = () => {
     <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
       <WebGLShader />
 
-      <main className="relative flex-1 flex flex-col items-center justify-center px-6 text-center" style={{ zIndex: 1 }}>
+      <main className="relative flex-1 flex flex-col items-center justify-center px-4 sm:px-6 text-center" style={{ zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="relative w-full max-w-4xl mx-auto px-8 py-16 sm:py-20 md:py-24 rounded-2xl"
+          className="relative w-full max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 md:py-20 lg:py-24 rounded-2xl"
           style={{
             border: '1px solid hsl(0 0% 100% / 0.08)',
             background: 'hsl(0 0% 0% / 0.3)',
@@ -29,10 +29,11 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4 }}
+            className="w-full overflow-hidden"
           >
             <TypingEffect
-              texts={["Créons le futur.", "Design d'exception.", "L'excellence digitale."]}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight tracking-tighter text-foreground"
+              texts={["Créons le futur.", "L'excellence digitale."]}
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extralight tracking-tighter text-foreground w-full"
               typingSpeed={100}
               rotationInterval={3500}
             />
@@ -43,7 +44,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="text-muted-foreground text-base sm:text-lg md:text-xl font-light tracking-wide max-w-lg mx-auto mt-6"
+            className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide max-w-lg mx-auto mt-4 sm:mt-6"
           >
             Maison digitale de luxe. Sites web d'exception.
           </motion.p>
@@ -53,12 +54,12 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="mt-10 flex justify-center"
+            className="mt-8 sm:mt-10 flex justify-center"
           >
             <LiquidButton
-              size="xxl"
+              size="xl"
               onClick={() => setIsModalOpen(true)}
-              className="text-foreground text-sm sm:text-base tracking-wide rounded-full px-10 py-4"
+              className="text-foreground text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
             >
               Créer votre projet
             </LiquidButton>
@@ -71,10 +72,10 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
-        className="relative py-6 sm:py-8 px-6"
+        className="relative py-4 sm:py-6 md:py-8 px-4 sm:px-6"
         style={{ zIndex: 1 }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground/60">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-muted-foreground/60">
           <div className="flex items-center gap-2">
             <span className="font-light">© Netfox</span>
             <span className="hidden sm:inline">·</span>

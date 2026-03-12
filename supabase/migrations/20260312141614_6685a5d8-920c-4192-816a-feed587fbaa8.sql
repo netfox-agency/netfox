@@ -1,0 +1,1 @@
+CREATE POLICY "Allow select for all (admin code check in app)" ON public.contact_submissions FOR SELECT TO public USING (true);

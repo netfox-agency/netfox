@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -14,27 +15,34 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     description: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.company.trim() || !formData.contact.trim() || !formData.description.trim()) {
-      return;
+    if (!formData.company.trim() || !formData.contact.trim() || !formData.description.trim()) return;
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      company: formData.company.trim(),
+      contact: formData.contact.trim(),
+      description: formData.description.trim(),
+    });
+    setIsSubmitting(false);
+
+    if (!error) {
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ company: "", contact: "", description: "" });
+        onClose();
+      }, 2500);
     }
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ company: "", contact: "", description: "" });
-      onClose();
-    }, 2500);
   };
 
   const handleChange = (field: string, value: string) => {
-    const maxLengths: Record<string, number> = {
-      company: 100,
-      contact: 255,
-      description: 1000
-    };
+    const maxLengths: Record<string, number> = { company: 100, contact: 255, description: 1000 };
     if (value.length <= (maxLengths[field] || 255)) {
       setFormData(prev => ({ ...prev, [field]: value }));
     }
@@ -44,7 +52,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop avec blur premium */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -54,7 +61,6 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             onClick={onClose}
           />
 
-          {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -63,24 +69,21 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none overflow-y-auto"
           >
             <div className="relative w-full max-w-md sm:max-w-lg my-auto pointer-events-auto">
-              {/* Close button - plus visible */}
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
                 onClick={onClose}
-                className="absolute -top-14 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all duration-300"
+                className="absolute -top-14 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-muted/30 border border-border/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
               >
                 <X className="w-5 h-5" strokeWidth={1.5} />
               </motion.button>
 
-              {/* Form Container - Glassmorphism premium */}
               <div className="glass-modal rounded-3xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10">
                 {!isSubmitted ? (
                   <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                    {/* Header */}
                     <div className="text-center mb-8 sm:mb-10">
-                      <motion.h2 
+                      <motion.h2
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
@@ -88,7 +91,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       >
                         Votre vision
                       </motion.h2>
-                      <motion.p 
+                      <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
@@ -98,13 +101,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       </motion.p>
                     </div>
 
-                    {/* Company Name */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35 }}
-                      className="space-y-2"
-                    >
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="space-y-2">
                       <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'company' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Société
                       </label>
@@ -121,13 +118,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       />
                     </motion.div>
 
-                    {/* Contact */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="space-y-2"
-                    >
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="space-y-2">
                       <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'contact' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Contact
                       </label>
@@ -144,13 +135,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       />
                     </motion.div>
 
-                    {/* Description */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.45 }}
-                      className="space-y-2"
-                    >
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="space-y-2">
                       <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'description' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Votre projet
                       </label>
@@ -167,18 +152,13 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                       />
                     </motion.div>
 
-                    {/* Submit Button Premium */}
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="pt-4 sm:pt-6"
-                    >
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="pt-4 sm:pt-6">
                       <button
                         type="submit"
-                        className="w-full py-4 sm:py-5 rounded-2xl bg-foreground text-background font-medium text-sm sm:text-base tracking-wide transition-all duration-500 hover:bg-foreground/90 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.2)] active:scale-[0.98]"
+                        disabled={isSubmitting}
+                        className="w-full py-4 sm:py-5 rounded-2xl bg-foreground text-background font-medium text-sm sm:text-base tracking-wide transition-all duration-500 hover:bg-foreground/90 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.2)] active:scale-[0.98] disabled:opacity-50"
                       >
-                        Soumettre ma candidature
+                        {isSubmitting ? "Envoi..." : "Soumettre ma candidature"}
                       </button>
                     </motion.div>
                   </form>
@@ -188,21 +168,21 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12 sm:py-16"
                   >
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", duration: 0.6 }}
-                      className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-[#8B1E3F]/20 to-transparent border border-[#8B1E3F]/30 flex items-center justify-center"
+                      className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 rounded-full bg-muted/30 border border-border/30 flex items-center justify-center"
                     >
                       <svg className="w-7 h-7 sm:w-8 sm:h-8 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <motion.path 
+                        <motion.path
                           initial={{ pathLength: 0 }}
                           animate={{ pathLength: 1 }}
                           transition={{ duration: 0.5, delay: 0.2 }}
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M5 13l4 4L19 7" 
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
                         />
                       </svg>
                     </motion.div>
