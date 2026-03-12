@@ -43,7 +43,7 @@ const Index = () => {
           className="mt-8"
         >
           <div className="flex items-center gap-2 text-xs text-muted-foreground/80 tracking-widest uppercase">
-            <Circle className="w-2 h-2 fill-emerald-400 text-emerald-400 animate-pulse" />
+            <Circle className="w-2 h-2 fill-current text-green-400 animate-pulse" style={{ color: 'hsl(142, 71%, 45%)' }} />
             <span>Disponible pour nouveaux projets</span>
           </div>
         </motion.div>
