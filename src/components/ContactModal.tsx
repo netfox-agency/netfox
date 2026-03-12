@@ -188,7 +188,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </motion.div>
                     <h3 className="text-xl sm:text-2xl font-light mb-2">Merci</h3>
                     <p className="text-muted-foreground text-sm sm:text-base font-light">
-                      Nous vous recontacterons sous 24h.
+                      Nous vous recontacterons dès que possible.
                     </p>
                   </motion.div>
                 )}
