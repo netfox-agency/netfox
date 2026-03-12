@@ -68,13 +68,13 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none overflow-y-auto"
           >
-            <div className="relative w-full max-w-md sm:max-w-lg my-auto pointer-events-auto">
+            <div className="relative w-full max-w-md sm:max-w-lg my-auto pointer-events-auto pt-16">
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
                 onClick={onClose}
-                className="absolute -top-14 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-muted/30 border border-border/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
+                className="absolute top-0 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-muted/30 border border-border/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
               >
                 <X className="w-5 h-5" strokeWidth={1.5} />
               </motion.button>
