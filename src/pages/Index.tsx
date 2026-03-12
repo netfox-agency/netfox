@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { WebGLShader } from "@/components/ui/web-gl-shader";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
-import { Circle } from "lucide-react";
+import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
 
 const Index = () => {
@@ -10,12 +10,9 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
-      {/* WebGL Shader Background - sits at z-0, fills entire screen */}
       <WebGLShader />
 
-      {/* Main Content - sits above the shader */}
       <main className="relative flex-1 flex flex-col items-center justify-center px-6 text-center" style={{ zIndex: 1 }}>
-        {/* Glass Card Container like reference */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,40 +24,31 @@ const Index = () => {
             backdropFilter: 'blur(2px)',
           }}
         >
-          {/* Main Title */}
-          <motion.h1
+          {/* Typing Effect Title */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight tracking-tighter leading-[0.85] mb-6"
+            transition={{ duration: 1.2, delay: 0.4 }}
           >
-            <span className="text-shimmer-enhanced">Créons le futur.</span>
-          </motion.h1>
+            <TypingEffect
+              texts={["Créons le futur.", "Design d'exception.", "L'excellence digitale."]}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight tracking-tighter text-foreground"
+              typingSpeed={100}
+              rotationInterval={3500}
+            />
+          </motion.div>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="text-muted-foreground text-base sm:text-lg md:text-xl font-light tracking-wide max-w-lg mx-auto"
+            className="text-muted-foreground text-base sm:text-lg md:text-xl font-light tracking-wide max-w-lg mx-auto mt-6"
           >
             Maison digitale de luxe. Sites web d'exception.
           </motion.p>
 
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-8 flex justify-center"
-          >
-            <div className="flex items-center gap-2 text-xs tracking-widest uppercase" style={{ color: 'hsl(142, 71%, 45%)' }}>
-              <Circle className="w-2 h-2 fill-current animate-pulse" />
-              <span>Disponible pour nouveaux projets</span>
-            </div>
-          </motion.div>
-
-          {/* CTA Button - Liquid Glass */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -92,7 +80,6 @@ const Index = () => {
             <span className="hidden sm:inline">·</span>
             <span className="hidden sm:inline font-light">L'excellence digitale</span>
           </div>
-          
           <div className="flex items-center gap-6">
             <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors">
               contact@netfox-agency.com
@@ -101,7 +88,6 @@ const Index = () => {
         </div>
       </motion.footer>
 
-      {/* Contact Modal */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
