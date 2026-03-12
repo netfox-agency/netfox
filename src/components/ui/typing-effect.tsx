@@ -49,11 +49,11 @@ export const TypingEffect = ({
     <div
       ref={containerRef}
       className={cn(
-        "relative inline-flex items-center justify-center text-center text-4xl font-bold",
+        "relative inline-flex items-center justify-center text-center font-bold",
         className
       )}
     >
-      {displayedText}
+      <span className="min-h-[1.2em] break-words">{displayedText}</span>
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -62,7 +62,7 @@ export const TypingEffect = ({
           repeat: Infinity,
           repeatType: "reverse",
         }}
-        className="ml-1 h-[1em] w-1 rounded-sm bg-current"
+        className="ml-1 h-[1em] w-[2px] sm:w-1 rounded-sm bg-current flex-shrink-0"
       />
     </div>
   )
