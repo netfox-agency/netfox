@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
-import { Lock, LogOut, Mail, Building2, FileText, Clock } from "lucide-react";
+import { Lock, LogOut, Mail, Phone, Building2, FileText, Clock } from "lucide-react";
 
 interface ContactSubmission {
   id: string;
@@ -139,8 +139,14 @@ const Admin = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Mail className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                        <span className="text-muted-foreground text-sm break-all">{sub.contact}</span>
+                        <span className="text-muted-foreground text-sm break-all">{sub.email}</span>
                       </div>
+                      {sub.phone && (
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                          <span className="text-muted-foreground text-sm break-all">{sub.phone}</span>
+                        </div>
+                      )}
                       <div className="flex items-start gap-2">
                         <FileText className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" />
                         <p className="text-muted-foreground text-sm leading-relaxed">{sub.description}</p>
