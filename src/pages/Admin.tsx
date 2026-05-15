@@ -50,6 +50,15 @@ const Admin = () => {
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <Helmet>
+          <title>Administration — NETFOX</title>
+          <meta name="description" content="Espace d'administration sécurisé NETFOX. Accès réservé." />
+          <meta name="robots" content="noindex, nofollow" />
+          <link rel="canonical" href="/admin" />
+          <meta property="og:title" content="Administration — NETFOX" />
+          <meta property="og:description" content="Espace d'administration sécurisé NETFOX." />
+          <meta property="og:url" content="/admin" />
+        </Helmet>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -89,6 +98,12 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Demandes — Administration NETFOX</title>
+        <meta name="description" content="Gestion des demandes de contact NETFOX." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="/admin" />
+      </Helmet>
       {/* Header */}
       <header className="border-b border-border/20 px-4 sm:px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
