@@ -1,0 +1,13 @@
+# NETFOX
+
+> NETFOX est une maison digitale de luxe qui conçoit des sites web d'exception et accompagne les marques ambitieuses dans leur transformation digitale.
+
+NETFOX est une agence digitale française spécialisée dans la création de sites web sur-mesure, le design d'interfaces premium, le marketing digital et la stratégie de marque. Nous travaillons avec un nombre limité de clients pour garantir un niveau d'excellence sans compromis.
+
+## Pages
+
+- [Accueil](/): Présentation de NETFOX, maison digitale de luxe, et formulaire pour soumettre votre projet.
+
+## Contact
+
+- Email: contact@netfox-agency.com
