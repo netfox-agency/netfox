@@ -11,7 +11,8 @@ interface ContactModalProps {
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [formData, setFormData] = useState({
     company: "",
-    contact: "",
+    email: "",
+    phone: "",
     description: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,13 +21,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.company.trim() || !formData.contact.trim() || !formData.description.trim()) return;
+    if (!formData.company.trim() || !formData.email.trim() || !formData.description.trim()) return;
     if (isSubmitting) return;
 
     setIsSubmitting(true);
     const { error } = await supabase.from("contact_submissions").insert({
       company: formData.company.trim(),
-      contact: formData.contact.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || null,
       description: formData.description.trim(),
     });
     setIsSubmitting(false);
@@ -35,14 +37,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ company: "", contact: "", description: "" });
+        setFormData({ company: "", email: "", phone: "", description: "" });
         onClose();
       }, 2500);
     }
   };
 
   const handleChange = (field: string, value: string) => {
-    const maxLengths: Record<string, number> = { company: 100, contact: 255, description: 1000 };
+    const maxLengths: Record<string, number> = { company: 100, email: 255, phone: 50, description: 1000 };
     if (value.length <= (maxLengths[field] || 255)) {
       setFormData(prev => ({ ...prev, [field]: value }));
     }
@@ -119,18 +121,34 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="space-y-2">
-                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'contact' ? 'text-foreground' : 'text-muted-foreground'}`}>
-                        Contact
+                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'email' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        Email
                       </label>
                       <input
-                        type="text"
-                        value={formData.contact}
-                        onChange={(e) => handleChange("contact", e.target.value)}
-                        onFocus={() => setFocusedField('contact')}
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleChange("email", e.target.value)}
+                        onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
-                        placeholder="Email ou téléphone"
+                        placeholder="votre@email.com"
                         required
                         maxLength={255}
+                        className="w-full bg-transparent border-b-2 border-border/30 py-3 sm:py-4 text-foreground text-base sm:text-lg placeholder:text-muted-foreground/30 focus:outline-none focus:border-foreground/60 transition-all duration-500 font-light"
+                      />
+                    </motion.div>
+
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }} className="space-y-2">
+                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'phone' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                        Téléphone
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleChange("phone", e.target.value)}
+                        onFocus={() => setFocusedField('phone')}
+                        onBlur={() => setFocusedField(null)}
+                        placeholder="+33 6 12 34 56 78"
+                        maxLength={50}
                         className="w-full bg-transparent border-b-2 border-border/30 py-3 sm:py-4 text-foreground text-base sm:text-lg placeholder:text-muted-foreground/30 focus:outline-none focus:border-foreground/60 transition-all duration-500 font-light"
                       />
                     </motion.div>
