@@ -76,6 +76,8 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
                 onClick={onClose}
+                aria-label="Fermer"
+                type="button"
                 className="absolute top-0 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-muted/30 border border-border/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
               >
                 <X className="w-5 h-5" strokeWidth={1.5} />
