@@ -21,13 +21,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.company.trim() || !formData.contact.trim() || !formData.description.trim()) return;
+    if (!formData.company.trim() || !formData.email.trim() || !formData.description.trim()) return;
     if (isSubmitting) return;
 
     setIsSubmitting(true);
     const { error } = await supabase.from("contact_submissions").insert({
       company: formData.company.trim(),
-      contact: formData.contact.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || null,
       description: formData.description.trim(),
     });
     setIsSubmitting(false);
@@ -36,14 +37,14 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ company: "", contact: "", description: "" });
+        setFormData({ company: "", email: "", phone: "", description: "" });
         onClose();
       }, 2500);
     }
   };
 
   const handleChange = (field: string, value: string) => {
-    const maxLengths: Record<string, number> = { company: 100, contact: 255, description: 1000 };
+    const maxLengths: Record<string, number> = { company: 100, email: 255, phone: 50, description: 1000 };
     if (value.length <= (maxLengths[field] || 255)) {
       setFormData(prev => ({ ...prev, [field]: value }));
     }

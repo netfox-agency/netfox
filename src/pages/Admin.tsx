@@ -7,7 +7,8 @@ interface ContactSubmission {
   id: string;
   created_at: string;
   company: string;
-  contact: string;
+  email: string;
+  phone: string | null;
   description: string;
 }
 
