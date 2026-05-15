@@ -85,21 +85,20 @@ function LiquidButton({
         <div
           className="absolute inset-0 rounded-[inherit] pointer-events-none"
           style={{
-            filter: "url(#glass-distortion)",
             background:
-              "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.08) 100%)",
-            backdropFilter: "blur(12px) saturate(1.4)",
-            WebkitBackdropFilter: "blur(12px) saturate(1.4)",
+              "linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0.02) 100%)",
+            backdropFilter: "blur(40px) saturate(1.8)",
+            WebkitBackdropFilter: "blur(40px) saturate(1.8)",
           }}
         />
 
-        {/* Border glow */}
+        {/* Subtle border with top highlight */}
         <div
           className="absolute inset-0 rounded-[inherit] pointer-events-none"
           style={{
-            border: "1px solid rgba(255,255,255,0.15)",
+            border: "1px solid rgba(255,255,255,0.18)",
             boxShadow:
-              "inset 0 1px 1px rgba(255,255,255,0.1), inset 0 -1px 1px rgba(0,0,0,0.05), 0 4px 20px rgba(0,0,0,0.08)",
+              "inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)",
           }}
         />
 
