@@ -76,6 +76,8 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
                 onClick={onClose}
+                aria-label="Fermer"
+                type="button"
                 className="absolute top-0 right-0 sm:right-2 w-10 h-10 flex items-center justify-center rounded-full bg-muted/30 border border-border/30 text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all duration-300"
               >
                 <X className="w-5 h-5" strokeWidth={1.5} />
@@ -104,10 +106,12 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="space-y-2">
-                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'company' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <label htmlFor="contact-company" className={`block text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'company' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Société
                       </label>
                       <input
+                        id="contact-company"
+                        name="company"
                         type="text"
                         value={formData.company}
                         onChange={(e) => handleChange("company", e.target.value)}
@@ -121,10 +125,12 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="space-y-2">
-                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'email' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <label htmlFor="contact-email" className={`block text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'email' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Email
                       </label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
@@ -138,10 +144,12 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }} className="space-y-2">
-                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'phone' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <label htmlFor="contact-phone" className={`block text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'phone' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Téléphone
                       </label>
                       <input
+                        id="contact-phone"
+                        name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleChange("phone", e.target.value)}
@@ -154,10 +162,12 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }} className="space-y-2">
-                      <label className={`text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'description' ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <label htmlFor="contact-description" className={`block text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300 ${focusedField === 'description' ? 'text-foreground' : 'text-muted-foreground'}`}>
                         Votre projet
                       </label>
                       <textarea
+                        id="contact-description"
+                        name="description"
                         value={formData.description}
                         onChange={(e) => handleChange("description", e.target.value)}
                         onFocus={() => setFocusedField('description')}
