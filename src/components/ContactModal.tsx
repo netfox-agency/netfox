@@ -11,7 +11,8 @@ interface ContactModalProps {
 const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [formData, setFormData] = useState({
     company: "",
-    contact: "",
+    email: "",
+    phone: "",
     description: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
