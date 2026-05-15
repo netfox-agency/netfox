@@ -41,27 +41,15 @@ function GlassFilter() {
   return (
     <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
       <defs>
-        <filter id="glass-distortion" x="-20%" y="-20%" width="140%" height="140%">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.03"
-            numOctaves="3"
-            seed="1"
-            result="noise"
+        <filter id="glass-blur" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="blur" />
+          <feColorMatrix
+            in="blur"
+            type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+            result="goo"
           />
-          <feGaussianBlur in="noise" stdDeviation="1" result="blurredNoise" />
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="blurredNoise"
-            scale="8"
-            xChannelSelector="R"
-            yChannelSelector="G"
-            result="displaced"
-          />
-          <feGaussianBlur in="displaced" stdDeviation="0.5" result="finalBlur" />
-          <feMerge>
-            <feMergeNode in="finalBlur" />
-          </feMerge>
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
         </filter>
       </defs>
     </svg>
