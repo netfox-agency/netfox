@@ -72,7 +72,7 @@ const Index = () => {
               onClick={() => setIsGalleryOpen(true)}
               className="text-foreground/90 text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
             >
-              Notre vitrine
+              La bande-annonce
             </LiquidButton>
 
           </motion.div>

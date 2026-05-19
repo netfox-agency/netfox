@@ -50,27 +50,11 @@ function Row({
           >
             <img
               src={r.src}
-              alt={r.title}
+              alt=""
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               draggable={false}
               loading="lazy"
             />
-            <figcaption
-              className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end justify-between gap-2"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%)",
-              }}
-            >
-              <div>
-                <div className="text-foreground text-sm sm:text-base font-light tracking-tight">
-                  {r.title}
-                </div>
-                <div className="text-foreground/60 text-[10px] sm:text-xs font-light tracking-wide">
-                  {r.subtitle}
-                </div>
-              </div>
-            </figcaption>
           </figure>
         ))}
       </motion.div>
@@ -116,19 +100,8 @@ export default function ResultsGallery({ isOpen, onClose }: Props) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-start justify-between gap-4 px-5 sm:px-10 pt-6 sm:pt-10 pb-2"
+            className="flex items-center justify-end gap-4 px-5 sm:px-10 pt-5 sm:pt-8 pb-2"
           >
-            <div className="flex flex-col min-w-0">
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/50 font-light">
-                Maison Netfox
-              </span>
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extralight tracking-tight text-foreground mt-2">
-                Notre vitrine
-              </h2>
-              <p className="text-xs sm:text-sm text-foreground/50 font-light mt-2 max-w-md">
-                Une sélection de créations signées.
-              </p>
-            </div>
             <button
               onClick={onClose}
               aria-label="Fermer"
