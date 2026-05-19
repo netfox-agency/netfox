@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { WebGLShader } from "@/components/ui/web-gl-shader";
-import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
 
@@ -57,12 +57,13 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 1.0 }}
             className="mt-8 sm:mt-10 flex justify-center"
           >
-            <GlassButton
+            <LiquidButton
+              size="xl"
               onClick={() => setIsModalOpen(true)}
-              className="text-foreground text-xs sm:text-sm md:text-base tracking-wide px-6 sm:px-10 py-3 sm:py-4"
+              className="text-foreground text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
             >
               Créer votre projet
-            </GlassButton>
+            </LiquidButton>
           </motion.div>
         </motion.div>
       </main>
