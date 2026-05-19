@@ -33,7 +33,7 @@ function Row({
 }) {
   const loop = [...items, ...items];
   return (
-    <div className="relative overflow-hidden py-2 sm:py-3 md:py-4">
+    <div className="relative overflow-hidden py-2 sm:py-3">
       <motion.div
         className="flex gap-3 sm:gap-5 md:gap-6 w-max"
         animate={{ x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }}
@@ -42,7 +42,7 @@ function Row({
         {loop.map((r, i) => (
           <figure
             key={i}
-            className="group relative shrink-0 w-[clamp(220px,58vw,560px)] aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden"
+            className="group relative shrink-0 h-[clamp(140px,28vh,320px)] aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden"
             style={{
               boxShadow:
                 "0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.08)",
