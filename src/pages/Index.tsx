@@ -58,7 +58,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="mt-8 sm:mt-10 flex justify-center"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <LiquidButton
               size="xl"
@@ -67,6 +67,14 @@ const Index = () => {
             >
               Créer votre projet
             </LiquidButton>
+            <LiquidButton
+              size="xl"
+              onClick={() => setIsGalleryOpen(true)}
+              className="text-foreground/90 text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
+            >
+              Voir nos résultats
+            </LiquidButton>
+
           </motion.div>
         </motion.div>
       </main>
