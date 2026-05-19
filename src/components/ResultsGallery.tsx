@@ -50,27 +50,11 @@ function Row({
           >
             <img
               src={r.src}
-              alt={r.title}
+              alt=""
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               draggable={false}
               loading="lazy"
             />
-            <figcaption
-              className="absolute inset-x-0 bottom-0 p-3 sm:p-4 flex items-end justify-between gap-2"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%)",
-              }}
-            >
-              <div>
-                <div className="text-foreground text-sm sm:text-base font-light tracking-tight">
-                  {r.title}
-                </div>
-                <div className="text-foreground/60 text-[10px] sm:text-xs font-light tracking-wide">
-                  {r.subtitle}
-                </div>
-              </div>
-            </figcaption>
           </figure>
         ))}
       </motion.div>
