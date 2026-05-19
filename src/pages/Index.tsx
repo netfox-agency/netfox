@@ -57,13 +57,12 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 1.0 }}
             className="mt-8 sm:mt-10 flex justify-center"
           >
-            <LiquidButton
-              size="xl"
+            <GlassButton
               onClick={() => setIsModalOpen(true)}
-              className="text-foreground text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
+              className="text-foreground text-xs sm:text-sm md:text-base tracking-wide px-6 sm:px-10 py-3 sm:py-4"
             >
               Créer votre projet
-            </LiquidButton>
+            </GlassButton>
           </motion.div>
         </motion.div>
       </main>
