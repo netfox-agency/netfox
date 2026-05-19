@@ -100,19 +100,8 @@ export default function ResultsGallery({ isOpen, onClose }: Props) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-start justify-between gap-4 px-5 sm:px-10 pt-6 sm:pt-10 pb-2"
+            className="flex items-center justify-end gap-4 px-5 sm:px-10 pt-5 sm:pt-8 pb-2"
           >
-            <div className="flex flex-col min-w-0">
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/50 font-light">
-                Maison Netfox
-              </span>
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extralight tracking-tight text-foreground mt-2">
-                Notre vitrine
-              </h2>
-              <p className="text-xs sm:text-sm text-foreground/50 font-light mt-2 max-w-md">
-                Une sélection de créations signées.
-              </p>
-            </div>
             <button
               onClick={onClose}
               aria-label="Fermer"
