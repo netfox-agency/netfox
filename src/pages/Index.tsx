@@ -5,9 +5,12 @@ import { WebGLShader } from "@/components/ui/web-gl-shader";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
+import ResultsGallery from "@/components/ResultsGallery";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
