@@ -122,11 +122,11 @@ export default function ResultsGallery({ isOpen, onClose }: Props) {
               <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/50 font-light">
                 Maison Netfox
               </span>
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extralight tracking-tight text-foreground mt-2 italic">
-                Quelques œuvres choisies
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extralight tracking-tight text-foreground mt-2">
+                Notre vitrine
               </h2>
               <p className="text-xs sm:text-sm text-foreground/50 font-light mt-2 max-w-md">
-                Un instant suspendu dans notre atelier.
+                Une sélection de créations signées.
               </p>
             </div>
             <button
