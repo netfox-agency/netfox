@@ -50,7 +50,7 @@ const Index = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide max-w-lg mx-auto mt-4 sm:mt-6"
           >
-            Maison digitale de luxe. Sites web d'exception.
+            Maison digitale de luxe. Sites web d'exception et acquisition client.
           </motion.p>
 
           {/* CTA Button */}
