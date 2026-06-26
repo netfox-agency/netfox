@@ -5,12 +5,9 @@ import { WebGLShader } from "@/components/ui/web-gl-shader";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
-import ResultsGallery from "@/components/ResultsGallery";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-
 
   return (
     <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
@@ -67,14 +64,6 @@ const Index = () => {
             >
               Créer votre projet
             </LiquidButton>
-            <LiquidButton
-              size="xl"
-              onClick={() => setIsGalleryOpen(true)}
-              className="text-foreground/90 text-xs sm:text-sm md:text-base tracking-wide rounded-full px-6 sm:px-10 py-3 sm:py-4"
-            >
-              La bande-annonce
-            </LiquidButton>
-
           </motion.div>
         </motion.div>
       </main>
@@ -102,7 +91,6 @@ const Index = () => {
       </motion.footer>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <ResultsGallery isOpen={isGalleryOpen} onClose={() => setIsGalleryOpen(false)} />
     </div>
   );
 };
