@@ -91,7 +91,6 @@ const Index = () => {
       </motion.footer>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      <ResultsGallery isOpen={isGalleryOpen} onClose={() => setIsGalleryOpen(false)} />
     </div>
   );
 };
