@@ -32,24 +32,21 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       description: formData.description.trim(),
     });
 
-    // Notification e-mail via Web3Forms (clé publique)
+    // Notification e-mail via Web3Forms (clé publique, requête sans préflight CORS)
     try {
-      await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: "a8e5658f-bbe2-4722-8ed9-d2dcf8293cc7",
-          subject: `Nouvelle demande — ${formData.company.trim()}`,
-          from_name: "Netfox",
-          name: formData.company.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim() || "—",
-          message: formData.description.trim(),
-        }),
-      });
+      const fd = new FormData();
+      fd.append("access_key", "a8e5658f-bbe2-4722-8ed9-d2dcf8293cc7");
+      fd.append("subject", `Nouvelle demande — ${formData.company.trim()}`);
+      fd.append("from_name", "Netfox");
+      fd.append("name", formData.company.trim());
+      fd.append("email", formData.email.trim());
+      fd.append("phone", formData.phone.trim() || "—");
+      fd.append("message", formData.description.trim());
+      await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
     } catch (e) {
       console.error("Web3Forms notification failed", e);
     }
+
 
     setIsSubmitting(false);
 
