@@ -31,7 +31,28 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       phone: formData.phone.trim() || null,
       description: formData.description.trim(),
     });
+
+    // Notification e-mail via Web3Forms (clé publique)
+    try {
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "a8e5658f-bbe2-4722-8ed9-d2dcf8293cc7",
+          subject: `Nouvelle demande — ${formData.company.trim()}`,
+          from_name: "Netfox",
+          name: formData.company.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || "—",
+          message: formData.description.trim(),
+        }),
+      });
+    } catch (e) {
+      console.error("Web3Forms notification failed", e);
+    }
+
     setIsSubmitting(false);
+
 
     if (!error) {
       setIsSubmitted(true);
