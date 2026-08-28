@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { WebGLShader } from "@/components/ui/web-gl-shader";
@@ -12,6 +12,11 @@ const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
+  // Le shader reste éclatant sur le splash, puis s'assombrit sous le contenu
+  // pour préserver le contraste des textes (voile lié au scroll).
+  const { scrollY } = useScroll();
+  const dimOpacity = useTransform(scrollY, [0, 500, 900], [0, 0.35, 0.72]);
+
   // Les liens profonds (netfox.ai/#realisations) ne scrollent pas seuls dans
   // une SPA : l'ancre n'existe pas encore au moment du scroll initial du navigateur.
   useEffect(() => {
@@ -23,6 +28,11 @@ const Index = () => {
   return (
     <div className="relative flex flex-col" style={{ background: 'transparent' }}>
       <WebGLShader />
+      <motion.div
+        aria-hidden="true"
+        className="fixed inset-0 pointer-events-none bg-black"
+        style={{ opacity: dimOpacity, zIndex: 0 }}
+      />
 
       <main className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center" style={{ zIndex: 1 }}>
         <motion.div
@@ -32,8 +42,8 @@ const Index = () => {
           className="relative w-full max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 md:py-20 lg:py-24 rounded-2xl"
           style={{
             border: '1px solid hsl(0 0% 100% / 0.08)',
-            background: 'hsl(0 0% 0% / 0.3)',
-            backdropFilter: 'blur(2px)',
+            background: 'hsl(0 0% 0% / 0.45)',
+            backdropFilter: 'blur(10px)',
           }}
         >
           {/* Typing Effect Title */}
@@ -45,7 +55,7 @@ const Index = () => {
           >
             <TypingEffect
               texts={["Créons le futur.", "L'excellence digitale."]}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extralight tracking-tighter text-foreground w-full"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tight text-foreground w-full"
               typingSpeed={100}
               rotationInterval={3500}
             />
@@ -107,7 +117,7 @@ const Index = () => {
         className="relative py-4 sm:py-6 md:py-8 px-4 sm:px-6"
         style={{ zIndex: 1 }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-muted-foreground/60">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <span className="font-light">© Netfox</span>
             <span className="hidden sm:inline">·</span>

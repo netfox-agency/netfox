@@ -25,10 +25,15 @@ const MentionsLegales = () => {
           <section>
             <h2 className="text-foreground text-lg font-semibold mb-3">Éditeur du site</h2>
             <p>
-              Netfox, entreprise individuelle.
+              NETFOX, société par actions simplifiée au capital de 1 000 €.
               <br />
-              {/* TODO: compléter SIRET, adresse et nom complet avant mise en ligne */}
-              SIRET : [à compléter]
+              Siège social : 24 boulevard Marcel Dassault, 64200 Biarritz, France.
+              <br />
+              SIREN : 102 875 317 · SIRET (siège) : 102 875 317 00012
+              <br />
+              TVA intracommunautaire : FR93102875317
+              <br />
+              Directeur de la publication : le Président de NETFOX.
               <br />
               Contact : contact@netfox-agency.com
             </p>
@@ -36,11 +41,10 @@ const MentionsLegales = () => {
 
           <section>
             <h2 className="text-foreground text-lg font-semibold mb-3">Hébergement</h2>
-            {/* TODO: confirmer l'hébergeur réel (Lovable ou autre) avant mise en ligne */}
             <p>
-              Ce site est hébergé par Lovable Labs Inc.
+              Ce site est hébergé par Cloudflare, Inc.
               <br />
-              lovable.dev
+              101 Townsend St, San Francisco, CA 94107, États-Unis · www.cloudflare.com
             </p>
           </section>
 

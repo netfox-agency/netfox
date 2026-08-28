@@ -38,13 +38,12 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Cartes quasi opaques : le shader en fond ne doit jamais délaver le texte.
 const cardStyle: React.CSSProperties = {
   background:
-    "linear-gradient(150deg, hsl(0 0% 100% / 0.05) 0%, hsl(0 0% 100% / 0.015) 100%)",
+    "linear-gradient(150deg, rgba(23, 23, 26, 0.94) 0%, rgba(13, 13, 15, 0.92) 100%)",
   border: "1px solid hsl(0 0% 100% / 0.08)",
-  boxShadow: "inset 0 1px 0 hsl(0 0% 100% / 0.06)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
+  boxShadow: "inset 0 1px 0 hsl(0 0% 100% / 0.06), 0 24px 60px -24px rgba(0,0,0,0.6)",
 };
 
 const ACCESS_STEPS = [
