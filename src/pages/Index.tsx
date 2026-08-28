@@ -1,19 +1,28 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { WebGLShader } from "@/components/ui/web-gl-shader";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
+import HomeSections from "@/components/HomeSections";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Les liens profonds (netfox.ai/#realisations) ne scrollent pas seuls dans
+  // une SPA : l'ancre n'existe pas encore au moment du scroll initial du navigateur.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    document.getElementById(hash.slice(1))?.scrollIntoView();
+  }, []);
+
   return (
-    <div className="relative min-h-screen flex flex-col overflow-hidden" style={{ background: 'transparent' }}>
+    <div className="relative flex flex-col" style={{ background: 'transparent' }}>
       <WebGLShader />
 
-      <main className="relative flex-1 flex flex-col items-center justify-center px-4 sm:px-6 text-center" style={{ zIndex: 1 }}>
+      <main className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 text-center" style={{ zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -47,7 +56,7 @@ const Index = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide max-w-lg mx-auto mt-4 sm:mt-6"
           >
-            Maison digitale de luxe. Sites web d'exception et acquisition client.
+            La maison digitale qui aide les entreprises à obtenir plus de clients grâce à Internet et aux IA.
           </motion.p>
 
           {/* CTA Button */}
@@ -65,8 +74,25 @@ const Index = () => {
               Créer votre projet
             </LiquidButton>
           </motion.div>
+
+          {/* Lien réalisations */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.4 }}
+            className="mt-6 sm:mt-8"
+          >
+            <a
+              href="#realisations"
+              className="link-underline text-muted-foreground hover:text-foreground text-xs sm:text-sm font-light tracking-[0.2em] uppercase transition-colors duration-300"
+            >
+              Voir les réalisations
+            </a>
+          </motion.div>
         </motion.div>
       </main>
+
+      <HomeSections onApply={() => setIsModalOpen(true)} />
 
       {/* Footer */}
       <motion.footer
@@ -85,6 +111,9 @@ const Index = () => {
           <div className="flex items-center gap-6">
             <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors">
               contact@netfox-agency.com
+            </a>
+            <a href="/mentions-legales" className="link-underline font-light hover:text-foreground/80 transition-colors">
+              Mentions légales
             </a>
           </div>
         </div>
