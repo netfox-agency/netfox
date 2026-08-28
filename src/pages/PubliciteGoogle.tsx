@@ -5,6 +5,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import ContactModal from "@/components/ContactModal";
+import {
+  AdVariantsVisual,
+  CountUpValue,
+  CpcVisual,
+  HeroSearchDemo,
+  KeywordsVisual,
+  LandingVisual,
+  TrackingVisual,
+} from "@/components/AdsPageVisuals";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -43,31 +52,36 @@ const METHOD = [
   {
     num: "01",
     title: "Stratégie & positionnement",
-    desc: "On définit où se battre : les recherches, les zones et les clients qui rapportent. Pas ceux qui coûtent.",
+    desc: "On définit où se battre : les recherches, les zones et les clients qui rapportent. Pas ceux qui coûtent. Chaque euro part sur une intention réelle d'achat.",
+    visual: <KeywordsVisual />,
   },
   {
     num: "02",
     title: "Annonces les plus pertinentes",
     desc: "Des annonces écrites pour votre métier, testées et affinées en continu. Plus l'annonce est pertinente, plus Google vous favorise, et moins le clic coûte cher.",
+    visual: <AdVariantsVisual />,
   },
   {
     num: "03",
     title: "Coût par clic rentable",
     desc: "Chaque enchère est pilotée pour rester sous votre seuil de rentabilité : un clic doit pouvoir devenir un client, sinon on ne le paie pas.",
+    visual: <CpcVisual />,
   },
   {
     num: "04",
     title: "Page de destination dédiée",
     desc: "Le clic n'arrive jamais sur une page d'accueil générique, mais sur une page conçue pour convertir : appel, devis ou réservation.",
+    visual: <LandingVisual />,
   },
   {
     num: "05",
     title: "Tracking & rentabilité",
     desc: "Appels, formulaires, réservations : tout est mesuré. On coupe ce qui ne rapporte pas, on renforce ce qui rapporte. C'est ce pilotage qui fait la rentabilité.",
+    visual: <TrackingVisual />,
   },
 ];
 
-type Stat = { value: string; label: string; note?: string };
+type Stat = { num: number; decimals?: number; suffix?: string; label: string; note?: string };
 
 const REPORTS: {
   name: string;
@@ -81,12 +95,12 @@ const REPORTS: {
     sector: "Événementiel nightlife · Malte & Albanie",
     badge: "90 derniers jours · données Google Ads",
     stats: [
-      { value: "69 400", label: "Impressions" },
-      { value: "7 410", label: "Clics" },
-      { value: "10,7 %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
-      { value: "0,56 €", label: "Coût par clic moyen" },
-      { value: "1 951", label: "Passages en billetterie" },
-      { value: "2,13 €", label: "Coût par passage" },
+      { num: 69400, label: "Impressions" },
+      { num: 7410, label: "Clics" },
+      { num: 10.7, decimals: 1, suffix: " %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
+      { num: 0.56, decimals: 2, suffix: " €", label: "Coût par clic moyen" },
+      { num: 1951, label: "Passages en billetterie" },
+      { num: 2.13, decimals: 2, suffix: " €", label: "Coût par passage" },
     ],
     context:
       "Campagnes multilingues (FR, EN, IT) par soirée et par ville, pages dédiées et tracking billetterie. 4 165 € investis sur la saison ont généré 1 951 passages en billetterie mesurés.",
@@ -96,10 +110,10 @@ const REPORTS: {
     sector: "Distributeur industriel B2B · Isolation acoustique",
     badge: "Campagne en cours · premiers résultats",
     stats: [
-      { value: "2 000", label: "Impressions" },
-      { value: "140", label: "Clics" },
-      { value: "7,0 %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
-      { value: "1,33 €", label: "Coût par clic moyen" },
+      { num: 2000, label: "Impressions" },
+      { num: 140, label: "Clics" },
+      { num: 7.0, decimals: 1, suffix: " %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
+      { num: 1.33, decimals: 2, suffix: " €", label: "Coût par clic moyen" },
     ],
     context:
       "Marché de niche B2B où chaque contact vaut cher. Campagne lancée récemment : la structure est en place, l'optimisation de la rentabilité est en cours.",
@@ -114,7 +128,7 @@ const PubliciteGoogle = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background overflow-hidden">
       <Helmet>
         <title>Publicité Google · Netfox</title>
         <meta
@@ -122,6 +136,24 @@ const PubliciteGoogle = () => {
           content="Être premier sur Google au moment exact où l'on vous cherche. Stratégie, annonces, coût par clic rentable, pages dédiées et tracking : la méthode Netfox, avec de vrais rapports de campagne."
         />
       </Helmet>
+
+      {/* Ambiance : grille discrète + halos */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(0 0% 100% / 0.022) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100% / 0.022) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          maskImage: "radial-gradient(ellipse 90% 60% at 50% 0%, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 90% 60% at 50% 0%, black 30%, transparent 75%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full"
+        style={{ background: "radial-gradient(closest-side, hsl(0 0% 100% / 0.07), transparent)" }}
+      />
 
       {/* Nav */}
       <motion.header
@@ -149,7 +181,7 @@ const PubliciteGoogle = () => {
           </Link>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="rounded-full bg-foreground text-background text-[13px] font-medium px-4 sm:px-5 py-2 transition-all duration-300 hover:bg-white hover:shadow-[0_8px_30px_-8px_rgba(255,255,255,0.35)]"
+            className="rounded-full bg-foreground text-background text-[13px] font-semibold px-4 sm:px-5 py-2 transition-all duration-300 hover:bg-white hover:shadow-[0_8px_30px_-8px_rgba(255,255,255,0.35)]"
           >
             Créer votre projet
           </button>
@@ -158,7 +190,7 @@ const PubliciteGoogle = () => {
 
       <main className="relative">
         {/* Hero */}
-        <section className="pt-36 sm:pt-44 pb-16 sm:pb-24 px-5 sm:px-8">
+        <section className="pt-36 sm:pt-44 pb-16 sm:pb-20 px-5 sm:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -191,25 +223,37 @@ const PubliciteGoogle = () => {
               C'est le levier le plus rapide pour générer des appels et des
               demandes de devis.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.85, ease: EASE }}
+              className="mt-12"
+            >
+              <HeroSearchDemo />
+            </motion.div>
           </div>
         </section>
 
         {/* Le vrai enjeu */}
-        <section className="py-16 sm:py-24 px-5 sm:px-8">
+        <section className="py-14 sm:py-20 px-5 sm:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeUp>
               <p className="text-foreground text-xl sm:text-2xl md:text-[1.7rem] font-normal leading-relaxed tracking-tight">
-                Mais être premier ne suffit pas. Sans stratégie, une campagne
-                dépense. Avec la bonne méthode, elle rapporte. Toute la
-                différence se joue sur cinq points.
+                Mais être premier ne suffit pas.
+                <br />
+                <span className="text-muted-foreground">
+                  Sans stratégie, une campagne dépense. Avec la bonne méthode,
+                  elle rapporte. Toute la différence se joue sur cinq points.
+                </span>
               </p>
             </FadeUp>
           </div>
         </section>
 
         {/* La méthode */}
-        <section className="py-16 sm:py-24 px-5 sm:px-8">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-14 sm:py-20 px-5 sm:px-8">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center">
               <FadeUp>
                 <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium">
@@ -223,18 +267,22 @@ const PubliciteGoogle = () => {
               </FadeUp>
             </div>
 
-            <div className="max-w-3xl mx-auto mt-12 sm:mt-16 space-y-4 sm:space-y-5">
+            <div className="mt-12 sm:mt-16 space-y-5 sm:space-y-6">
               {METHOD.map((m, i) => (
-                <FadeUp key={m.num} delay={i * 0.06}>
-                  <div className="flex gap-5 sm:gap-8 rounded-3xl p-6 sm:p-8" style={glassStyle}>
-                    <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light pt-1.5 shrink-0">
-                      {m.num}
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-foreground tracking-tight">
+                <FadeUp key={m.num} delay={i * 0.05}>
+                  <div
+                    className="grid md:grid-cols-[minmax(260px,320px)_1fr] gap-5 md:gap-8 items-center rounded-3xl p-5 sm:p-7"
+                    style={glassStyle}
+                  >
+                    {m.visual}
+                    <div className="px-1 sm:px-0">
+                      <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">
+                        {m.num}
+                      </div>
+                      <h3 className="text-lg sm:text-2xl font-semibold text-foreground tracking-tight mt-2.5">
                         {m.title}
                       </h3>
-                      <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-2">
+                      <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3 max-w-xl">
                         {m.desc}
                       </p>
                     </div>
@@ -246,7 +294,7 @@ const PubliciteGoogle = () => {
         </section>
 
         {/* Résultats réels */}
-        <section className="py-16 sm:py-24 px-5 sm:px-8">
+        <section className="py-14 sm:py-20 px-5 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <FadeUp>
@@ -298,8 +346,8 @@ const PubliciteGoogle = () => {
                             border: "1px solid hsl(0 0% 100% / 0.06)",
                           }}
                         >
-                          <div className="text-2xl sm:text-4xl font-semibold tracking-tight text-foreground">
-                            {s.value}
+                          <div className="text-2xl sm:text-4xl font-semibold tracking-tight text-foreground tabular-nums">
+                            <CountUpValue value={s.num} decimals={s.decimals ?? 0} suffix={s.suffix ?? ""} />
                           </div>
                           <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground mt-2">
                             {s.label}
