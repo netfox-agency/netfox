@@ -29,9 +29,9 @@ function Panel({
     <div
       className={`relative rounded-2xl overflow-hidden ${className}`}
       style={{
-        background: "rgba(0, 0, 0, 0.35)",
-        border: "1px solid hsl(0 0% 100% / 0.07)",
-        boxShadow: "inset 0 1px 0 hsl(0 0% 100% / 0.04)",
+        background: "linear-gradient(160deg, rgba(20, 22, 30, 0.96), rgba(11, 12, 17, 0.96))",
+        border: "1px solid rgba(178, 192, 235, 0.12)",
+        boxShadow: "inset 0 1px 0 rgba(210, 220, 255, 0.07)",
       }}
     >
       {children}
@@ -43,9 +43,9 @@ function Panel({
 
 function HeroSkeleton() {
   return (
-    <div className="rounded-xl px-4 py-3" style={{ border: "1px solid hsl(0 0% 100% / 0.05)" }}>
-      <div className="h-2 w-1/2 rounded-full bg-white/[0.13]" />
-      <div className="h-1.5 w-3/4 rounded-full bg-white/[0.07] mt-2.5" />
+    <div className="rounded-xl px-4 py-3" style={{ border: "1px solid rgba(178, 192, 235, 0.1)" }}>
+      <div className="h-2 w-1/2 rounded-full bg-white/[0.2]" />
+      <div className="h-1.5 w-3/4 rounded-full bg-white/[0.18] mt-2.5" />
     </div>
   );
 }
@@ -124,8 +124,8 @@ export function HeroSearchDemo() {
                 Appels en direct
               </motion.span>
             </div>
-            <div className="h-2 w-4/5 rounded-full bg-white/[0.16] mt-3" />
-            <div className="h-1.5 w-3/5 rounded-full bg-white/[0.09] mt-2" />
+            <div className="h-2 w-4/5 rounded-full bg-white/[0.24] mt-3" />
+            <div className="h-1.5 w-3/5 rounded-full bg-white/[0.2] mt-2" />
           </motion.div>
 
           {/* Concurrents */}
@@ -171,7 +171,7 @@ export function KeywordsVisual() {
             <motion.div
               key={k.t}
               className="flex items-center justify-between gap-3 rounded-lg px-3 py-1.5"
-              style={{ border: "1px solid hsl(0 0% 100% / 0.06)" }}
+              style={{ border: "1px solid rgba(178, 192, 235, 0.11)" }}
               initial={reduced ? { opacity: 1 } : { opacity: 0, y: 8 }}
               animate={
                 reduced
@@ -242,9 +242,9 @@ export function AdVariantsVisual() {
             <div className="text-[10px] font-medium uppercase tracking-[0.14em] text-foreground/45">
               {v.name}
             </div>
-            <div className="h-1.5 w-full rounded-full bg-white/[0.14] mt-2.5" />
-            <div className="h-1.5 w-2/3 rounded-full bg-white/[0.08] mt-1.5" />
-            <div className="h-1.5 w-3/4 rounded-full bg-white/[0.08] mt-1.5" />
+            <div className="h-1.5 w-full rounded-full bg-white/[0.2] mt-2.5" />
+            <div className="h-1.5 w-2/3 rounded-full bg-white/[0.13] mt-1.5" />
+            <div className="h-1.5 w-3/4 rounded-full bg-white/[0.13] mt-1.5" />
             <motion.div
               className={`mt-3 inline-flex items-center rounded-full px-2 py-0.5 font-mono text-[10px] ${
                 v.win ? "text-[#8FD0A0]" : "text-foreground/50"
@@ -311,7 +311,7 @@ export function CpcVisual() {
             ↓ enchères optimisées
           </span>
         </div>
-        <div className="w-3/4 h-1.5 rounded-full bg-white/[0.07] mt-4 overflow-hidden">
+        <div className="w-3/4 h-1.5 rounded-full bg-white/[0.18] mt-4 overflow-hidden">
           <motion.div
             className="h-full rounded-full origin-left bg-[#8FD0A0]/70"
             initial={{ scaleX: reduced ? 0.45 : 1 }}
@@ -343,7 +343,7 @@ export function LandingVisual() {
           {/* nav */}
           <motion.div className="flex items-center justify-between" {...block(0.05)}>
             <div className="h-1.5 w-14 rounded-full bg-white/[0.2]" />
-            <div className="h-4 w-16 rounded-full bg-white/[0.12]" />
+            <div className="h-4 w-16 rounded-full bg-white/[0.18]" />
           </motion.div>
           {/* hero */}
           <motion.div className="mt-3" {...block(0.15)}>
@@ -410,7 +410,7 @@ export function TrackingVisual() {
                   className="w-full rounded-t"
                   style={{
                     height: `${h * 100}%`,
-                    background: i === BARS.length - 1 ? "#8FD0A0" : "hsl(0 0% 100% / 0.22)",
+                    background: i === BARS.length - 1 ? "#8FD0A0" : "hsl(0 0% 100% / 0.3)",
                     transformOrigin: "bottom",
                   }}
                   initial={{ scaleY: reduced ? 1 : 0 }}

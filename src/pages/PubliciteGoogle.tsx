@@ -47,35 +47,35 @@ const CHAPTERS = [
     num: "01",
     title: "On choisit le terrain",
     lead: "Où se battre, et surtout où ne pas se battre.",
-    desc: "Les recherches, les zones et les clients qui rapportent, jamais ceux qui coûtent. Chaque euro part sur une intention réelle d'achat, pas sur de la curiosité.",
+    desc: "Les recherches, les zones et les clients qui rapportent, jamais ceux qui coûtent.",
     visual: <KeywordsVisual />,
   },
   {
     num: "02",
     title: "On écrit, on teste, on garde",
     lead: "L'annonce la plus pertinente gagne deux fois.",
-    desc: "Des annonces écrites pour votre métier, comparées en continu. Plus l'annonce est pertinente, plus Google vous favorise, et moins le clic vous coûte cher.",
+    desc: "Plus l'annonce est pertinente, plus Google vous favorise et moins le clic coûte cher.",
     visual: <AdVariantsVisual />,
   },
   {
     num: "03",
     title: "On tient le prix du clic",
     lead: "Un clic doit pouvoir devenir un client.",
-    desc: "Chaque enchère est pilotée pour rester sous votre seuil de rentabilité. En dessous, on paie. Au-dessus, on ne paie pas. C'est aussi simple que ça.",
+    desc: "Chaque enchère reste sous votre seuil de rentabilité. En dessous on paie, au-dessus non.",
     visual: <CpcVisual />,
   },
   {
     num: "04",
     title: "On construit où le clic atterrit",
     lead: "Jamais sur une page d'accueil générique.",
-    desc: "Le visiteur arrive sur une page conçue pour une seule chose : déclencher l'appel, le devis ou la réservation. Le reste est enlevé.",
+    desc: "Une page conçue pour une seule chose : déclencher l'appel ou le devis. Le reste est enlevé.",
     visual: <LandingVisual />,
   },
   {
     num: "05",
     title: "On mesure, on coupe, on renforce",
     lead: "C'est le pilotage qui fait la rentabilité.",
-    desc: "Appels, formulaires, réservations : tout est mesuré. Ce qui ne rapporte pas est coupé, ce qui rapporte est renforcé. Chaque mois, vous savez ce que ça rapporte.",
+    desc: "Tout est mesuré. Ce qui ne rapporte pas est coupé. Chaque mois, vous savez où va l'argent.",
     visual: <TrackingVisual />,
   },
 ];
@@ -178,9 +178,9 @@ const PubliciteGoogle = () => {
                 className="lg:col-span-4"
               >
                 <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed">
-                  Vous payez Google pour apparaître tout en haut des résultats,
-                  et seulement lorsqu'un client clique. C'est le levier le plus
-                  rapide pour générer des appels.
+                  Vous n'êtes en haut des résultats que lorsqu'un client cherche, et
+                  vous ne payez que s'il clique. C'est le levier le plus rapide
+                  pour générer des appels.
                 </p>
                 <button onClick={() => setIsModalOpen(true)} className={`${cta} mt-7`}>
                   Créer votre projet
@@ -199,6 +199,59 @@ const PubliciteGoogle = () => {
             >
               <HeroSearchDemo />
             </motion.div>
+          </div>
+        </section>
+
+        {/* ── Résultats : chiffres composés, séparateurs fins, aucune carte ── */}
+        <section className="py-12 sm:py-28 px-5 sm:px-8">
+          <div className="max-w-6xl mx-auto">
+            <FadeUp>
+              <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground max-w-2xl leading-[1.08]">
+                Les chiffres,
+                <br />
+                <span className="font-serif italic font-normal">pas les promesses.</span>
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <p className="text-muted-foreground text-[15px] sm:text-lg font-normal leading-relaxed max-w-xl mt-5">
+                Retours sur investissement constatés chez nos clients, sur des
+                campagnes que nous gérons de bout en bout.
+              </p>
+            </FadeUp>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 mt-10 sm:mt-16">
+              {ROI.map((r, i) => (
+                /* Les classes de bord et d'espacement vivent sur l'élément de
+                   grille lui-même : sur l'enfant unique, first:/last: seraient
+                   tous deux vrais et supprimeraient toutes les marges. */
+                <FadeUp key={r.name} delay={i * 0.08} className="h-full">
+                  <div
+                    className={`h-full py-6 lg:py-0 border-t lg:border-t-0 ${
+                      i === 0 ? "lg:pr-8" : "lg:px-8 lg:border-l"
+                    } ${i === ROI.length - 1 ? "lg:pr-0" : ""}`}
+                    style={{ borderColor: "rgba(178, 192, 235, 0.12)" }}
+                  >
+                    <div className="text-[2.4rem] sm:text-6xl font-semibold tracking-tight text-[#8FD0A0] tabular-nums leading-none">
+                      <CountUpValue value={r.num} decimals={r.decimals} prefix="×" />
+                    </div>
+                    {/* La mention « retour sur investissement » figure déjà dans
+                        l'intro de la section : la répéter sous chacun des quatre
+                        chiffres n'ajoute rien et double la hauteur sur mobile. */}
+                    <div className="text-[15px] sm:text-base font-semibold text-foreground mt-3">{r.name}</div>
+                    <div className="text-[13px] sm:text-sm font-normal text-muted-foreground mt-1">
+                      {r.sector} · {r.note}
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+
+            <FadeUp delay={0.3}>
+              <p className="text-muted-foreground text-sm font-normal mt-8">
+                Et bien d'autres. Campagnes gérées de bout en bout : stratégie,
+                annonces, pages dédiées et tracking.
+              </p>
+            </FadeUp>
           </div>
         </section>
 
@@ -244,66 +297,19 @@ const PubliciteGoogle = () => {
                         {c.title}
                       </h2>
                     </div>
-                    <p className="font-serif italic text-xl sm:text-2xl text-foreground/90 mt-6">
+                    <p className="font-serif italic text-2xl sm:text-3xl text-foreground mt-5 leading-snug">
                       {c.lead}
                     </p>
                     <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-4 max-w-xl">
                       {c.desc}
                     </p>
                   </div>
-                  <div className={`lg:col-span-6 ${i % 2 === 1 ? "lg:order-1 lg:col-start-1" : ""}`}>
+                  <div className={`order-first lg:order-none lg:col-span-6 ${i % 2 === 1 ? "lg:order-1 lg:col-start-1" : ""}`}>
                     {c.visual}
                   </div>
                 </article>
               </FadeUp>
             ))}
-          </div>
-        </section>
-
-        {/* ── Résultats : chiffres composés, séparateurs fins, aucune carte ── */}
-        <section className="py-14 sm:py-32 px-5 sm:px-8">
-          <div className="max-w-6xl mx-auto">
-            <FadeUp>
-              <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground max-w-2xl leading-[1.08]">
-                Les chiffres,
-                <br />
-                <span className="font-serif italic font-normal">pas les promesses.</span>
-              </h2>
-            </FadeUp>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-14 sm:mt-20">
-              {ROI.map((r, i) => (
-                /* Les classes de bord et d'espacement vivent sur l'élément de
-                   grille lui-même : sur l'enfant unique, first:/last: seraient
-                   tous deux vrais et supprimeraient toutes les marges. */
-                <FadeUp key={r.name} delay={i * 0.08} className="h-full">
-                  <div
-                    className={`h-full py-8 lg:py-0 border-t lg:border-t-0 ${
-                      i === 0 ? "lg:pr-8" : "lg:px-8 lg:border-l"
-                    } ${i === ROI.length - 1 ? "lg:pr-0" : ""}`}
-                    style={{ borderColor: "rgba(178, 192, 235, 0.12)" }}
-                  >
-                    <div className="text-5xl sm:text-6xl font-semibold tracking-tight text-[#8FD0A0] tabular-nums leading-none">
-                      <CountUpValue value={r.num} decimals={r.decimals} prefix="×" />
-                    </div>
-                    <div className="text-xs uppercase tracking-[0.16em] font-medium text-muted-foreground mt-4">
-                      Retour sur investissement
-                    </div>
-                    <div className="text-base font-semibold text-foreground mt-4">{r.name}</div>
-                    <div className="text-sm font-normal text-muted-foreground mt-1">
-                      {r.sector} · {r.note}
-                    </div>
-                  </div>
-                </FadeUp>
-              ))}
-            </div>
-
-            <FadeUp delay={0.3}>
-              <p className="text-muted-foreground text-sm font-normal mt-8">
-                Et bien d'autres. Campagnes gérées de bout en bout : stratégie,
-                annonces, pages dédiées et tracking.
-              </p>
-            </FadeUp>
           </div>
         </section>
 
