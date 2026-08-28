@@ -5,7 +5,6 @@ import cleanelLive from "@/assets/portfolio/cleanel-live.jpg";
 import rcmLive from "@/assets/portfolio/rcm-live.jpg";
 import npsLive from "@/assets/portfolio/nps-live.jpg";
 import southstreetLive from "@/assets/portfolio/southstreet-live.jpg";
-import artisaLive from "@/assets/portfolio/artisa-live.jpg";
 import cycyLive from "@/assets/portfolio/cycy-live.jpg";
 import nimesLive from "@/assets/portfolio/nimes-live.jpg";
 import summerpartyLive from "@/assets/portfolio/summerparty-live.jpg";
@@ -33,7 +32,6 @@ import cpVoiture from "@/assets/portfolio/cp-voiture.jpg";
 export const SHOWCASE = [
   cleanelLive, // rangée du haut
   summerpartyLive, // rangée du bas
-  artisaLive,
   demoLoccar,
   demoCoteprivee,
   cycyLive,
