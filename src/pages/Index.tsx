@@ -1,7 +1,11 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { WebGLShader } from "@/components/ui/web-gl-shader";
+/* three.js pèse la moitié du bundle et ne sert que sur cette page :
+   chargé à part pour ne pas ralentir les autres. */
+const WebGLShader = lazy(() =>
+  import("@/components/ui/web-gl-shader").then((m) => ({ default: m.WebGLShader }))
+);
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
@@ -28,7 +32,9 @@ const Index = () => {
 
   return (
     <div className="relative flex flex-col" style={{ background: 'transparent' }}>
-      <WebGLShader />
+      <Suspense fallback={<div aria-hidden="true" className="fixed inset-0 bg-background" style={{ zIndex: 0 }} />}>
+        <WebGLShader />
+      </Suspense>
       {/* Voile teinté comme le fond du site (pas du noir pur), sinon la
           bascule entre le shader et les sections se voit. */}
       <motion.div

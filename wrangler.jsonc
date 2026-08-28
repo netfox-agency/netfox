@@ -1,0 +1,25 @@
+{
+  // Configuration explicite du déploiement Cloudflare Workers.
+  //
+  // Sans ce fichier, wrangler tente de configurer le projet automatiquement en
+  // détectant le framework, et échoue avec :
+  //   « The version of Vite used in the project ("5.4.19") cannot be
+  //     automatically configured »
+  // parce que la configuration automatique s'appuie sur @cloudflare/vite-plugin,
+  // qui exige Vite 6 ou plus. Déclarer la configuration ici court-circuite
+  // entièrement cette détection : le site est servi comme des fichiers statiques.
+  "name": "netfox",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./dist",
+
+    // Le site est une application React à routage côté navigateur : toute URL
+    // inconnue doit renvoyer l'application plutôt qu'une erreur.
+    //
+    // Les pages pré-rendues ne sont pas concernées : Cloudflare cherche d'abord
+    // un fichier correspondant. Pour /site-internet-couvreur il sert
+    // dist/site-internet-couvreur/index.html, avec ses propres titre,
+    // description et contenu. Ce repli ne s'applique qu'aux routes sans fichier.
+    "not_found_handling": "single-page-application"
+  }
+}
