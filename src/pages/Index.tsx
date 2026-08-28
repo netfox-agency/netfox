@@ -156,9 +156,12 @@ const Index = () => {
             <span className="hidden sm:inline">·</span>
             <span className="hidden sm:inline font-light">L'excellence digitale</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6">
             <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               contact@netfox-agency.com
+            </a>
+            <a href="/publicite-google" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
+              Publicité Google
             </a>
             <a href="/mentions-legales" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               Mentions légales

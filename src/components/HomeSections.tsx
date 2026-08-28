@@ -155,8 +155,50 @@ const HomeSections = ({
         </div>
       </section>
 
+      {/* Pages métier : maillage interne, et surtout la promesse la plus
+          directe pour un artisan qui arrive de Google. */}
+      <section className="pb-6 sm:pb-10">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <FadeUp>
+            <div
+              className="rounded-3xl p-7 sm:p-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10"
+              style={cardStyle}
+            >
+              <div className="lg:flex-1">
+                <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-foreground">
+                  Vous êtes artisan ?
+                </h3>
+                <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3 max-w-xl">
+                  Nous avons écrit une page pour votre métier : ce qui bloque la
+                  plupart des sites, ce qui déclenche vraiment un devis, et des
+                  exemples en ligne que vous pouvez ouvrir.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+                <Link
+                  to="/site-internet-couvreur"
+                  className="group/v inline-flex items-center justify-between gap-4 rounded-2xl px-5 py-3.5 text-sm font-medium text-foreground/85 hover:text-foreground transition-colors"
+                  style={{ border: "1px solid rgba(178, 192, 235, 0.14)" }}
+                >
+                  Site internet pour couvreur
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover/v:translate-x-0.5" strokeWidth={1.6} />
+                </Link>
+                <Link
+                  to="/site-internet-entreprise-nettoyage"
+                  className="group/v inline-flex items-center justify-between gap-4 rounded-2xl px-5 py-3.5 text-sm font-medium text-foreground/85 hover:text-foreground transition-colors"
+                  style={{ border: "1px solid rgba(178, 192, 235, 0.14)" }}
+                >
+                  Site pour entreprise de nettoyage
+                  <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover/v:translate-x-0.5" strokeWidth={1.6} />
+                </Link>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* CTA final */}
-      <section id="candidature" className="py-28 sm:py-40">
+      <section id="candidature" className="py-20 sm:py-32">
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
           <FadeUp>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground">

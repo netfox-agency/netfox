@@ -1,5 +1,6 @@
 import { writeFileSync } from "fs";
 import { resolve } from "path";
+import { VERTICALS } from "../src/content/verticals";
 
 const BASE_URL = "https://netfox.ai";
 
@@ -12,7 +13,13 @@ interface SitemapEntry {
 
 const entries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/publicite-google", changefreq: "monthly", priority: "0.8" },
+  { path: "/publicite-google", changefreq: "monthly", priority: "0.9" },
+  // Une entrée par page verticale (métier)
+  ...VERTICALS.map((v) => ({
+    path: `/${v.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.9",
+  })),
 ];
 
 function generateSitemap(entries: SitemapEntry[]) {
