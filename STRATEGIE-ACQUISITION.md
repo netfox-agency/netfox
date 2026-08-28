@@ -120,17 +120,22 @@ C'est probablement **l'action au meilleur rapport effort/résultat de tout ce do
 
 ## 7. Ordre d'exécution
 
-### Immédiat (semaine 1) — sinon rien ne fonctionne
-1. **Pré-rendu du site** : passer en génération statique ou ajouter un pré-rendu au build. Sans ça, tout le reste est vain.
-2. `robots.txt` : nommer explicitement les robots IA
-3. Fiche Google Business Profile créée et remplie
-4. Lien « Site réalisé par Netfox » ajouté sur les sites clients
+### ✅ Fait le 28 août 2026
+1. **Pré-rendu par route** (`scripts/prerender.ts`, lancé en `postbuild`). Chaque page a désormais son propre fichier HTML avec titre, description, canonical, Open Graph, JSON-LD et contenu de repli. Le site passe de 77 caractères indexables à 1 100–4 800 par page. Script en Node pur, sans navigateur : aucun risque pour le déploiement.
+2. **`robots.txt`** : GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot et CCBot explicitement autorisés.
+3. **`llms.txt`** enrichi : 600 → 4 400 caractères, avec les ROI chiffrés, les secteurs, les projets nommés et la méthode.
+4. **Balisage** : graphe `ProfessionalService` + `WebSite` avec adresse, TVA, `knowsAbout` et catalogue des quatre prestations. `FAQPage` sur les pages métier.
+5. **Deux pages verticales publiées** : `/site-internet-couvreur` et `/site-internet-entreprise-nettoyage`, chacune avec le problème du métier, la méthode, des preuves cliquables et cinq questions balisées.
+6. **Maillage interne** : bloc « Vous êtes artisan ? » sur l'accueil, liens en pied de page, sitemap à 4 URLs.
 
-### Mois 1-2 — les fondations qui convertissent
-5. Les 4 pages verticales (cercle 2), qui servent aussi de pages Ads
-6. Page `/agence-web-pays-basque`
-7. `llms.txt` enrichi, balisage `ProfessionalService` complet, sitemap à jour
-8. Suivi installé : Search Console, GA4, et surtout **le suivi des appels**
+### À faire par Melvin (hors code, et déterminant)
+7. **Fiche Google Business Profile** créée et remplie. C'est le facteur numéro un du référencement local et c'est gratuit.
+8. **Lien « Site réalisé par Netfox »** demandé à chaque client et intégré par défaut sur les prochains sites. Meilleur rapport effort/résultat du document.
+9. **Search Console** : propriété vérifiée, sitemap soumis, indexation des nouvelles pages demandée.
+
+### Mois 1-2 — compléter le socle
+10. Deux pages verticales de plus : location de véhicules et bateaux, puis une page `/agence-web-pays-basque` pour le local.
+11. Suivi des appels et des formulaires, pour savoir quelles pages rapportent.
 
 ### Mois 3-6 — le moteur à contenu
 9. Une page « question de prospect » par mois (cercle 1), toujours avec des chiffres réels
@@ -147,13 +152,14 @@ C'est probablement **l'action au meilleur rapport effort/résultat de tout ce do
 
 Le trafic n'est pas l'objectif. Les demandes le sont.
 
-| Indicateur | Aujourd'hui | 3 mois | 6 mois | 12 mois |
-|---|---|---|---|---|
-| Pages indexées | 1 | 8 | 14 | 20 |
-| Demandes entrantes / mois | 0 (site vitrine passif) | 2 | 5 | 10 |
-| Avis Google | 0 | 5 | 10 | 20 |
-| Citations IA (ChatGPT/Perplexity sur requêtes métier) | 0 | à mesurer | présent | régulier |
-| Position pack local Pays Basque | absent | top 10 | top 5 | top 3 |
+| Indicateur | Avant | Aujourd'hui | 3 mois | 6 mois | 12 mois |
+|---|---|---|---|---|---|
+| Pages indexables | 1 | **5** | 8 | 14 | 20 |
+| Caractères lisibles sans JS (accueil) | 77 | **1 094** | — | — | — |
+| Demandes entrantes / mois | 0 | 0 | 2 | 5 | 10 |
+| Avis Google | 0 | 0 | 5 | 10 | 20 |
+| Citations IA (ChatGPT/Perplexity sur requêtes métier) | 0 | 0 | à mesurer | présent | régulier |
+| Position pack local Pays Basque | absent | absent | top 10 | top 5 | top 3 |
 
 **Le seul chiffre qui compte vraiment : le nombre de demandes de projet reçues qui ne viennent pas du téléphone.**
 
