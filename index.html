@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicons : la tête du renard aux petites tailles (le logo entier
+         devient illisible à 16 px), le logo complet pour les grandes icônes.
+         Pas d'arrondi appliqué : iOS et Android ajoutent le leur. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0a0b10" />
 
     <!-- Polices en <link> plutôt qu'en @import CSS : évite la cascade
          CSS → découverte → téléchargement, qui retarde le premier rendu. -->
@@ -47,7 +56,7 @@
           "name": "Netfox",
           "legalName": "NETFOX",
           "url": "https://netfox.ai/",
-          "logo": "https://netfox.ai/favicon.svg",
+          "logo": "https://netfox.ai/icon-512.png",
           "image": "https://netfox.ai/og-image.png",
           "description": "Studio digital français : création de sites web sur mesure, référencement naturel, publicité Google et tunnels de conversion pour artisans, PME et marques exigeantes.",
           "email": "contact@netfox-agency.com",

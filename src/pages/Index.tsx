@@ -169,6 +169,15 @@ const Index = () => {
             <a href="/publicite-google" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               Publicité Google
             </a>
+            <a href="/site-internet-couvreur" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
+              Couvreurs
+            </a>
+            <a href="/site-internet-entreprise-nettoyage" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
+              Nettoyage
+            </a>
+            <a href="/agence-web-pays-basque" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
+              Pays Basque
+            </a>
             <a href="/mentions-legales" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               Mentions légales
             </a>
