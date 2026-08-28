@@ -71,7 +71,8 @@ const HomeSections = ({
             <FadeUp delay={0.1}>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground mt-5 leading-[1.05]">
                 Notre métier : vous
-                <br className="hidden sm:block" /> apporter des clients.
+                <br className="hidden sm:block" />{" "}
+                <span className="font-serif italic font-normal">apporter des clients.</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -159,7 +160,8 @@ const HomeSections = ({
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
           <FadeUp>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground">
-              Votre vision mérite l'exception.
+              Votre vision mérite{" "}
+              <span className="font-serif italic font-normal">l'exception.</span>
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
