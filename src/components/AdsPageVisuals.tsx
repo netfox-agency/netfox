@@ -424,17 +424,19 @@ export function CountUpValue({
   value,
   decimals = 0,
   suffix = "",
+  prefix = "",
 }: {
   value: number;
   decimals?: number;
   suffix?: string;
+  prefix?: string;
 }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const mv = useMotionValue(0);
   const text = useTransform(mv, (v) =>
-    `${v.toLocaleString("fr-FR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`
+    `${prefix}${v.toLocaleString("fr-FR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`
   );
 
   useEffect(() => {
@@ -446,6 +448,7 @@ export function CountUpValue({
   if (reduced) {
     return (
       <span ref={ref}>
+        {prefix}
         {value.toLocaleString("fr-FR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
         {suffix}
       </span>

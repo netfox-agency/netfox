@@ -83,6 +83,14 @@ const METHOD = [
 
 type Stat = { num: number; decimals?: number; suffix?: string; label: string; note?: string };
 
+// Retours sur investissement constatés (chiffres fournis par Netfox).
+const ROI_STRIP = [
+  { name: "Summer Party", sector: "Événementiel", num: 2.4, decimals: 1, note: "moyenne toutes campagnes" },
+  { name: "NPS Acoustique", sector: "B2B industriel", num: 7.5, decimals: 1, note: "dès le premier mois" },
+  { name: "Top Service", sector: "Nettoyage de toitures", num: 5.5, decimals: 1, note: "lissé sur l'année" },
+  { name: "CleaningPage", sector: "Plateforme SaaS", num: 3, decimals: 0, note: "moyenne" },
+];
+
 const REPORTS: {
   name: string;
   sector: string;
@@ -103,7 +111,7 @@ const REPORTS: {
       { num: 2.13, decimals: 2, suffix: " €", label: "Coût par passage" },
     ],
     context:
-      "Campagnes multilingues (FR, EN, IT) par soirée et par ville, pages dédiées et tracking billetterie. 4 165 € investis sur la saison ont généré 1 951 passages en billetterie mesurés.",
+      "Pages de destination créées sur mesure, tracking billetterie et gestion complète des campagnes multilingues (FR, EN, IT), par soirée et par ville. 4 165 € investis sur 90 jours, 1 951 passages en billetterie mesurés et un retour moyen de ×2,4 sur l'ensemble des campagnes.",
   },
   {
     name: "NPS Acoustique",
@@ -116,7 +124,7 @@ const REPORTS: {
       { num: 1.33, decimals: 2, suffix: " €", label: "Coût par clic moyen" },
     ],
     context:
-      "Marché de niche B2B où chaque contact vaut cher. Campagne lancée récemment : la structure est en place, l'optimisation de la rentabilité est en cours.",
+      "Marché de niche B2B où chaque contact vaut cher. Structure, annonces et suivi posés dès le départ : ×7,5 de retour sur investissement dès le premier mois de campagne.",
   },
 ];
 
@@ -309,11 +317,41 @@ const PubliciteGoogle = () => {
               </FadeUp>
               <FadeUp delay={0.2}>
                 <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
-                  Extraits directs de nos comptes Google Ads. D'autres études de
-                  cas sont en cours d'ajout.
+                  Retours sur investissement constatés chez nos clients, et
+                  extraits directs de nos comptes Google Ads.
                 </p>
               </FadeUp>
             </div>
+
+            {/* Bandeau ROI */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12 sm:mt-16">
+              {ROI_STRIP.map((r, i) => (
+                <FadeUp key={r.name} delay={i * 0.08} className="h-full">
+                  <div
+                    className="h-full rounded-3xl px-5 py-6 sm:px-7 sm:py-8 text-center"
+                    style={glassStyle}
+                  >
+                    <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#8FD0A0] tabular-nums">
+                      <CountUpValue value={r.num} decimals={r.decimals} prefix="×" />
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground mt-2">
+                      Retour sur investissement
+                    </div>
+                    <div className="text-sm sm:text-base font-semibold text-foreground mt-3">
+                      {r.name}
+                    </div>
+                    <div className="text-xs font-normal text-muted-foreground mt-0.5">
+                      {r.sector} · {r.note}
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+            <FadeUp delay={0.3}>
+              <p className="text-center text-muted-foreground text-sm font-normal mt-5">
+                Et bien d'autres.
+              </p>
+            </FadeUp>
 
             <div className="space-y-6 sm:space-y-8 mt-12 sm:mt-16">
               {REPORTS.map((r, ri) => (
@@ -375,9 +413,11 @@ const PubliciteGoogle = () => {
         <section className="py-24 sm:py-36 px-5 sm:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeUp>
-              <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground">
-                Et si vos clients vous
-                <br /> trouvaient en premier ?
+              <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
+                Faites partie de ceux qui sont
+                <br />
+                <span className="text-[#8FD0A0]">rentables</span> avec la
+                publicité Google.
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
