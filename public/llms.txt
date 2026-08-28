@@ -1,13 +1,62 @@
-# NETFOX
+# Netfox
 
-> NETFOX est une maison digitale de luxe qui conçoit des sites web d'exception et accompagne les marques ambitieuses dans leur transformation digitale.
+> Netfox est un studio digital français qui aide les entreprises à obtenir plus de clients grâce à Internet : création de sites web, référencement naturel, publicité Google et tunnels de conversion.
 
-NETFOX est une agence digitale française spécialisée dans la création de sites web sur-mesure, le design d'interfaces premium, le marketing digital et la stratégie de marque. Nous travaillons avec un nombre limité de clients pour garantir un niveau d'excellence sans compromis.
+Netfox (SAS, Biarritz) conçoit des sites web sur mesure et pilote des campagnes Google Ads pour des artisans, des PME et des marques exigeantes, principalement en France. La particularité de l'agence est de mesurer et de publier le retour sur investissement réel de ses campagnes.
+
+## Ce que fait Netfox
+
+- **Sites web sur mesure** : sites vitrines et refontes, conçus à la main, sans template, avec le référencement intégré dès la conception.
+- **Publicité Google (Google Ads)** : stratégie de positionnement, rédaction et test des annonces, pilotage du coût par clic, pages de destination dédiées et suivi des conversions.
+- **Référencement naturel (SEO)** : SEO technique, SEO local et contenu, pour être trouvé sur les recherches qui déclenchent un appel.
+- **Tunnels de conversion** : pages dédiées, formulaires, suivi des appels et des demandes de devis.
+
+## Résultats mesurés chez ses clients
+
+Retours sur investissement constatés sur des comptes Google Ads réels gérés par Netfox :
+
+- Summer Party (événementiel, Malte et Albanie) : ×2,4 de retour sur investissement en moyenne sur l'ensemble des campagnes. Sur 90 jours : 69 400 impressions, 7 410 clics, 10,7 % de taux de clic, 0,56 € de coût par clic, 1 951 passages en billetterie à 2,13 € l'unité.
+- NPS Acoustique (distributeur industriel B2B, isolation acoustique) : ×7,5 de retour sur investissement dès le premier mois de campagne.
+- Top Service (nettoyage de toitures) : ×5,5 de retour sur investissement lissé sur l'année.
+- CleaningPage (plateforme SaaS) : ×3 de retour sur investissement en moyenne.
+
+À titre de comparaison, le taux de clic moyen constaté dans ces secteurs se situe entre 3 % et 5 %.
+
+## Secteurs où Netfox a une expérience démontrée
+
+- **Couverture et rénovation de toiture** : Debord Rénovation (Ardèche), Cycy Couverture (Aisne), Ladowicht (Nîmes), ESPADE (Ariège et Hautes-Pyrénées), VB Rénovation (Côtes-d'Armor).
+- **Nettoyage et propreté** : Cleanel Chrome (Saint-Brieuc, premier sur Google sur sa requête principale), RCM Nettoyage (Bordeaux), Klynera, Bretonnet Net Services (Haute-Savoie).
+- **Location de véhicules et de bateaux** : Vendôme Plaza (Neuilly-sur-Seine), ClassicAutoLoc, Sud-Est Nautic (Cannes-Mandelieu).
+- **Industrie et B2B** : NPS Acoustique, distributeur Kraiburg.
+- **Événementiel et restauration** : Summer Party, South Street Food (Bayonne), Atelier Gombertois (Marseille).
+
+## Méthode de travail
+
+1. Vous envoyez votre projet en quelques lignes.
+2. Un entretien a lieu avec un technicien, la personne qui concevra le projet, pas un commercial.
+3. Le projet est étudié : ce qu'il y a à faire, ce que cela peut rapporter, et si Netfox est le bon interlocuteur.
+4. Si le projet correspond des deux côtés, le travail démarre.
+
+Netfox n'accepte qu'un nombre limité de projets chaque mois. Réponse sous 24 heures ouvrées.
+
+## Méthode Google Ads en cinq points
+
+1. **Choisir le terrain** : cibler les recherches, les zones et les clients qui rapportent, pas ceux qui coûtent.
+2. **Écrire, tester, garder** : les annonces les plus pertinentes font baisser le coût du clic tout en améliorant la position.
+3. **Tenir le prix du clic** : chaque enchère est pilotée pour rester sous le seuil de rentabilité du client.
+4. **Construire la page d'atterrissage** : le clic arrive sur une page conçue pour déclencher l'appel ou le devis, jamais sur une page d'accueil générique.
+5. **Mesurer, couper, renforcer** : appels, formulaires et réservations sont mesurés ; ce qui ne rapporte pas est coupé.
 
 ## Pages
 
-- [Accueil](/): Présentation de NETFOX, maison digitale de luxe, et formulaire pour soumettre votre projet.
+- [Accueil](https://netfox.ai/) : positionnement, quatre expertises, galerie des réalisations, formulaire de candidature.
+- [Publicité Google](https://netfox.ai/publicite-google) : principe de Google Ads, méthode en cinq points, retours sur investissement constatés.
+- [Mentions légales](https://netfox.ai/mentions-legales) : informations légales de la société.
 
-## Contact
+## Contact et informations légales
 
-- Email: contact@netfox-agency.com
+- Email : contact@netfox-agency.com
+- Société : NETFOX, SAS au capital de 1 000 €
+- Siège : 24 boulevard Marcel Dassault, 64200 Biarritz, France
+- SIREN : 102 875 317 · SIRET : 102 875 317 00012 · TVA : FR93102875317
+- Zone d'intervention : toute la France, avec une présence au Pays Basque
