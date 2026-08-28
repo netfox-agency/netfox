@@ -8,7 +8,6 @@ import southstreetLive from "@/assets/portfolio/southstreet-live.jpg";
 import cycyLive from "@/assets/portfolio/cycy-live.jpg";
 import nimesLive from "@/assets/portfolio/nimes-live.jpg";
 import summerpartyLive from "@/assets/portfolio/summerparty-live.jpg";
-import flashfreeplayLive from "@/assets/portfolio/flashfreeplay-live.jpg";
 import gombertoisLive from "@/assets/portfolio/gombertois-live.jpg";
 import demoLoccar from "@/assets/portfolio/demo-loccar.jpg";
 import demoCoteprivee from "@/assets/portfolio/demo-coteprivee.jpg";
@@ -45,7 +44,6 @@ export const SHOWCASE = [
   npsLive,
   cpVitres,
   cpCslpv,
-  flashfreeplayLive,
 ];
 
 export function ShowcaseRow({
