@@ -68,7 +68,7 @@ export function CodeVisual() {
   const perLine = 0.09; // part du cycle par ligne
   return (
     <Frame>
-      <div className="flex items-center gap-3 px-4 py-2.5 border-b border-white/[0.05]">
+      <div className="flex items-center gap-3 px-4 py-2 border-b border-white/[0.05]">
         <div className="flex gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#5a4344]" />
           <span className="w-2 h-2 rounded-full bg-[#5a5343]" />
@@ -76,7 +76,7 @@ export function CodeVisual() {
         </div>
         <span className="font-mono text-[10px] text-foreground/35">index.tsx</span>
       </div>
-      <div className="px-4 py-3 font-mono text-[11px] sm:text-xs leading-[1.75]">
+      <div className="px-4 py-2.5 font-mono text-[11px] sm:text-xs leading-[1.6]">
         {CODE.map((line, i) => {
           const start = 0.04 + i * perLine;
           const end = start + perLine * 0.9;
@@ -104,7 +104,7 @@ export function CodeVisual() {
         })}
         {!reduced && (
           <motion.span
-            className="inline-block w-[7px] h-3.5 align-middle bg-foreground/70"
+            className="absolute left-4 bottom-2.5 w-[7px] h-3.5 bg-foreground/70"
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           />
@@ -175,7 +175,7 @@ export function AdsVisual() {
           >
             <div className="flex items-center gap-2">
               <span
-                className="text-[9px] font-medium uppercase tracking-[0.08em] text-foreground/85 rounded px-1.5 py-0.5"
+                className="text-[10px] font-medium uppercase tracking-[0.06em] text-foreground/85 rounded px-1.5 py-0.5"
                 style={{ border: "1px solid hsl(0 0% 100% / 0.3)" }}
               >
                 Sponsorisé
@@ -205,7 +205,7 @@ export function AdsVisual() {
 
 export function SeoVisual() {
   const reduced = useReducedMotion();
-  const ROW = 38;
+  const ROW = 34;
   // Votre site part de la 4e place et grimpe palier par palier.
   const climbTimes = [0, 0.2, 0.3, 0.38, 0.48, 0.56, 0.66, 1];
   const climbY = [ROW * 3, ROW * 3, ROW * 2, ROW * 2, ROW, ROW, 0, 0];
@@ -220,7 +220,7 @@ export function SeoVisual() {
   return (
     <Frame>
       <div className="px-4 pt-3.5">
-        <div className="text-[10px] uppercase tracking-[0.2em] font-medium text-foreground/35 mb-2.5">
+        <div className="text-[10px] uppercase tracking-[0.2em] font-medium text-foreground/35 mb-2">
           Résultats Google
         </div>
         <div className="relative" style={{ height: ROW * 4 }}>
@@ -292,16 +292,16 @@ export function FunnelVisual() {
   const reduced = useReducedMotion();
   return (
     <Frame>
-      <div className="px-4 pt-4 space-y-3.5">
+      <div className="px-4 pt-3.5 space-y-3">
         {FUNNEL.map((f, i) => {
           const start = 0.06 + i * 0.1;
           const end = start + 0.12;
           return (
             <div key={f.label}>
-              <div className="flex items-baseline justify-between mb-1.5">
-                <span className="text-[11px] font-medium text-foreground/70">{f.label}</span>
+              <div className="flex items-baseline justify-between mb-1">
+                <span className="text-xs font-medium text-foreground/75">{f.label}</span>
                 <motion.span
-                  className={`font-mono text-[11px] ${f.dim ? "text-foreground/45" : "text-[#8FD0A0]"}`}
+                  className={`font-mono text-xs ${f.dim ? "text-foreground/55" : "text-[#8FD0A0]"}`}
                   initial={{ opacity: reduced ? 1 : 0 }}
                   animate={reduced ? { opacity: 1 } : { opacity: [0, 0, 1, 1] }}
                   transition={reduced ? undefined : { duration: LOOP, times: [0, end - 0.02, end + 0.04, 1], repeat: Infinity }}
