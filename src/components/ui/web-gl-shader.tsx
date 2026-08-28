@@ -1,10 +1,14 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 
 export function WebGLShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  // Sans WebGL (vieux appareils, navigateurs restreints, Lockdown Mode),
+  // new THREE.WebGLRenderer jette : sans filet, c'est tout le site qui
+  // disparaît. On bascule alors sur un fond statique.
+  const [webglFailed, setWebglFailed] = useState(false)
   const sceneRef = useRef<{
     scene: THREE.Scene | null
     camera: THREE.OrthographicCamera | null
@@ -117,8 +121,14 @@ export function WebGLShader() {
       refs.uniforms.resolution.value = [width, height]
     }
 
-    initScene()
-    animate()
+    try {
+      initScene()
+      animate()
+    } catch (e) {
+      console.warn("WebGL indisponible, fond statique utilisé.", e)
+      setWebglFailed(true)
+      return
+    }
     window.addEventListener("resize", handleResize)
 
     return () => {
@@ -134,6 +144,20 @@ export function WebGLShader() {
       refs.renderer?.dispose()
     }
   }, [])
+
+  if (webglFailed) {
+    return (
+      <div
+        aria-hidden="true"
+        className="fixed top-0 left-0 w-full h-full"
+        style={{
+          zIndex: 0,
+          background:
+            "radial-gradient(ellipse 90% 50% at 15% 78%, rgba(255, 245, 225, 0.14), transparent 60%), radial-gradient(ellipse 70% 40% at 85% 82%, rgba(120, 140, 255, 0.1), transparent 60%), radial-gradient(ellipse 60% 35% at 70% 85%, rgba(255, 110, 90, 0.08), transparent 60%), #050505",
+        }}
+      />
+    )
+  }
 
   return (
     <canvas
