@@ -140,7 +140,7 @@ export function HeroSearchDemo() {
           </motion.div>
         </div>
 
-        <div className="text-center text-[11px] font-medium uppercase tracking-[0.2em] text-foreground/35 mt-1">
+        <div className="text-center text-xs font-medium uppercase tracking-[0.18em] text-foreground/45 mt-1">
           Position n°1 · payée au clic uniquement
         </div>
       </div>

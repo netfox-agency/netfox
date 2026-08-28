@@ -32,7 +32,7 @@ function FadeUp({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium">
+    <p className="text-xs uppercase tracking-[0.3em] sm:tracking-[0.35em] text-muted-foreground font-medium">
       {children}
     </p>
   );

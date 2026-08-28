@@ -12,7 +12,7 @@ const MentionsLegales = () => {
       <main className="flex-1 max-w-3xl mx-auto px-5 sm:px-8 py-20 sm:py-28 w-full">
         <Link
           to="/"
-          className="text-foreground/40 text-sm font-light hover:text-foreground transition-colors"
+          className="inline-flex items-center min-h-[44px] text-foreground/60 text-sm font-normal hover:text-foreground transition-colors"
         >
           ← Retour au site
         </Link>

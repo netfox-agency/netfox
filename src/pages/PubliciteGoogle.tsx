@@ -110,12 +110,12 @@ const PubliciteGoogle = () => {
       {/* Halo chaud très diffus : évite le fond plat d'une seule couleur */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-64 -left-40 w-[900px] h-[700px] rounded-full"
+        className="pointer-events-none absolute -top-64 left-0 -translate-x-1/3 w-[min(900px,140vw)] h-[700px] rounded-full"
         style={{ background: "radial-gradient(closest-side, rgba(143,208,160,0.07), transparent)" }}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[45%] -right-60 w-[800px] h-[800px] rounded-full"
+        className="pointer-events-none absolute top-[45%] right-0 translate-x-1/3 w-[min(800px,130vw)] h-[800px] rounded-full"
         style={{ background: "radial-gradient(closest-side, rgba(150,170,255,0.05), transparent)" }}
       />
 
