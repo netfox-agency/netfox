@@ -6,9 +6,11 @@ import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import ContactModal from "@/components/ContactModal";
 import HomeSections from "@/components/HomeSections";
+import { ExamplesGallery } from "@/components/ShowcaseGallery";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
   // Les liens profonds (netfox.ai/#realisations) ne scrollent pas seuls dans
   // une SPA : l'ancre n'existe pas encore au moment du scroll initial du navigateur.
@@ -82,17 +84,20 @@ const Index = () => {
             transition={{ duration: 1, delay: 1.4 }}
             className="mt-6 sm:mt-8"
           >
-            <a
-              href="#realisations"
+            <button
+              onClick={() => setIsGalleryOpen(true)}
               className="link-underline text-muted-foreground hover:text-foreground text-xs sm:text-sm font-light tracking-[0.2em] uppercase transition-colors duration-300"
             >
               Voir les réalisations
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </main>
 
-      <HomeSections onApply={() => setIsModalOpen(true)} />
+      <HomeSections
+        onApply={() => setIsModalOpen(true)}
+        onShowExamples={() => setIsGalleryOpen(true)}
+      />
 
       {/* Footer */}
       <motion.footer
@@ -120,6 +125,7 @@ const Index = () => {
       </motion.footer>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ExamplesGallery isOpen={isGalleryOpen} onClose={() => setIsGalleryOpen(false)} />
     </div>
   );
 };
