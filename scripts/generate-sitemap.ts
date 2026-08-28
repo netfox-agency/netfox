@@ -3,6 +3,7 @@ import { resolve } from "path";
 import { VERTICALS } from "../src/content/verticals";
 
 const BASE_URL = "https://netfox.ai";
+const TODAY = new Date().toISOString().slice(0, 10);
 
 interface SitemapEntry {
   path: string;
@@ -12,13 +13,14 @@ interface SitemapEntry {
 }
 
 const entries: SitemapEntry[] = [
-  { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/publicite-google", changefreq: "monthly", priority: "0.9" },
+  { path: "/", changefreq: "weekly", priority: "1.0", lastmod: TODAY },
+  { path: "/publicite-google", changefreq: "monthly", priority: "0.9", lastmod: TODAY },
   // Une entrée par page verticale (métier)
   ...VERTICALS.map((v) => ({
     path: `/${v.slug}`,
     changefreq: "monthly" as const,
     priority: "0.9",
+    lastmod: TODAY,
   })),
 ];
 

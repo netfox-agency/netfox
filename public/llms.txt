@@ -24,11 +24,13 @@ Retours sur investissement constatés sur des comptes Google Ads réels gérés 
 
 ## Secteurs où Netfox a une expérience démontrée
 
-- **Couverture et rénovation de toiture** : Debord Rénovation (Ardèche), Cycy Couverture (Aisne), Ladowicht (Nîmes), ESPADE (Ariège et Hautes-Pyrénées), VB Rénovation (Côtes-d'Armor).
-- **Nettoyage et propreté** : Cleanel Chrome (Saint-Brieuc, premier sur Google sur sa requête principale), RCM Nettoyage (Bordeaux), Klynera, Bretonnet Net Services (Haute-Savoie).
-- **Location de véhicules et de bateaux** : Vendôme Plaza (Neuilly-sur-Seine), ClassicAutoLoc, Sud-Est Nautic (Cannes-Mandelieu).
-- **Industrie et B2B** : NPS Acoustique, distributeur Kraiburg.
-- **Événementiel et restauration** : Summer Party, South Street Food (Bayonne), Atelier Gombertois (Marseille).
+Sites conçus par Netfox et actuellement en ligne :
+
+- **Couverture et rénovation de toiture** : Debord Rénovation, couvreur en Ardèche du Sud (renovation-ardeche.fr) ; Cycy Couverture Zinguerie, Saint-Gobain dans l'Aisne (cycycouverture.fr) ; Ladowicht, couvreur à Nîmes et dans le Gard (artisan-nimes.fr).
+- **Nettoyage et propreté** : Cleanel Chrome, Saint-Brieuc (cleanelchrome.fr) ; RCM Nettoyage, Bordeaux (rcm-nettoyage.fr).
+- **Industrie et B2B** : NPS Acoustique, distributeur de solutions d'isolation acoustique (nps-acoustique.fr).
+- **Restauration et événementiel** : South Street Food, Bayonne (southstreetfood.fr) ; Summer Party, soirées à Malte et en Albanie (summerparty.events).
+- **Artisanat d'art et e-commerce** : Atelier Gombertois, ferronnier d'art à Marseille (ateliergombertois.fr) ; Maison Artisa, cosmétique (artisacosmetique.com).
 
 ## Méthode de travail
 
@@ -50,7 +52,10 @@ Netfox n'accepte qu'un nombre limité de projets chaque mois. Réponse sous 24 h
 ## Pages
 
 - [Accueil](https://netfox.ai/) : positionnement, quatre expertises, galerie des réalisations, formulaire de candidature.
-- [Publicité Google](https://netfox.ai/publicite-google) : principe de Google Ads, méthode en cinq points, retours sur investissement constatés.
+- [Publicité Google](https://netfox.ai/publicite-google) : principe de Google Ads, méthode en cinq points, retours sur investissement constatés chez les clients.
+- [Site internet pour couvreur](https://netfox.ai/site-internet-couvreur) : ce qui empêche un site de couvreur de générer des devis, la structure qui fonctionne (pages par prestation et par commune, appel à portée de pouce), exemples de sites de couvreurs en ligne, et cinq questions fréquentes sur le budget, les délais et la rentabilité de Google Ads pour un couvreur.
+- [Site internet pour entreprise de nettoyage](https://netfox.ai/site-internet-entreprise-nettoyage) : distinction entre clientèle particuliers et professionnels, rôle du crédit d'impôt de 50 %, structure de pages qui évite les pénalités Google, exemples de sites de sociétés de propreté en ligne, et questions fréquentes sur comment trouver des clients en nettoyage.
+- [Agence web au Pays Basque](https://netfox.ai/agence-web-pays-basque) : Netfox est installé à Biarritz. Référencement local, saisonnalité des campagnes, pack local Google, et intervention partout en France.
 - [Mentions légales](https://netfox.ai/mentions-legales) : informations légales de la société.
 
 ## Contact et informations légales

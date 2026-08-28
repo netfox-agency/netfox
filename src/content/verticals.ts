@@ -97,8 +97,9 @@ export const VERTICALS: Vertical[] = [
     proofs: [
       {
         name: "Debord Rénovation",
-        place: "Couvreur en Ardèche",
-        result: "Site vitrine et campagnes Google Ads",
+        place: "Couvreur en Ardèche du Sud",
+        result: "Site vitrine, référencement local et campagnes Google Ads",
+        url: "https://renovation-ardeche.fr",
       },
       {
         name: "Cycy Couverture Zinguerie",
@@ -212,11 +213,7 @@ export const VERTICALS: Vertical[] = [
           "Site sur mesure, référencement local sur vingt-deux communes, click-to-call et suivi des appels",
         url: "https://rcm-nettoyage.fr",
       },
-      {
-        name: "Klynera",
-        place: "Vitres, fin de chantier, automobile",
-        result: "Identité et site éditorial premium",
-      },
+
     ],
 
     faq: [
@@ -244,6 +241,94 @@ export const VERTICALS: Vertical[] = [
 
     ctaTitle: "Vos prochains contrats",
     ctaAccent: "se cherchent déjà sur Google.",
+  },
+  {
+    slug: "agence-web-pays-basque",
+    title: "Agence web au Pays Basque : sites et Google Ads à Biarritz",
+    description:
+      "Netfox est installé à Biarritz. Sites web sur mesure, référencement local et campagnes Google Ads pour les entreprises du Pays Basque, avec des résultats mesurés.",
+    eyebrow: "Biarritz · Bayonne · Anglet · Pays Basque",
+    h1: "Une agence web installée",
+    h1Accent: "au Pays Basque.",
+    lead:
+      "Netfox est domicilié à Biarritz. Nous travaillons partout en France, mais nous connaissons ce territoire, ses saisons et sa clientèle, et cela change la façon de construire un site.",
+
+    problemTitle: "Ce qui compte vraiment pour une entreprise locale",
+    problemLead:
+      "Sur un marché comme le Pays Basque, où l'activité est saisonnière et la concurrence dense, un beau site ne suffit pas. Il faut être trouvé au bon moment.",
+    problems: [
+      {
+        title: "Apparaître sur la carte avant d'apparaître dans la liste",
+        desc: "Pour une recherche locale, Google affiche d'abord une carte avec trois établissements. Y figurer dépend de votre fiche Google Business Profile et de vos avis, pas seulement de votre site.",
+      },
+      {
+        title: "La saisonnalité change tout",
+        desc: "Beaucoup d'activités ici font leur année sur quelques mois. Une campagne publicitaire qui tourne toute l'année au même rythme gaspille le budget hors saison et sous-investit au pic.",
+      },
+      {
+        title: "Une clientèle qui vient d'ailleurs",
+        desc: "Une partie de vos clients ne sont pas d'ici : ils préparent leur venue depuis Paris, Bordeaux ou l'étranger. Ils ne cherchent pas avec les mêmes mots que les habitants.",
+      },
+      {
+        title: "Les avis pèsent plus que le discours",
+        desc: "Sur un marché de proximité, la réputation circule vite. Les avis Google sont le premier élément regardé, avant même le contenu du site.",
+      },
+    ],
+
+    solutionTitle: "Comment nous travaillons avec les entreprises d'ici",
+    solutions: [
+      {
+        title: "Le référencement local d'abord",
+        desc: "Fiche Google Business Profile, cohérence des coordonnées partout sur le web, avis clients, contenu réellement ancré sur vos communes. C'est ce qui fait apparaître sur la carte.",
+      },
+      {
+        title: "Des campagnes calées sur votre saison",
+        desc: "Budget renforcé au moment où vos clients cherchent, réduit quand ils ne cherchent pas. Nous pilotons le coût par clic pour qu'il reste sous votre seuil de rentabilité.",
+      },
+      {
+        title: "Un site qui parle aux deux clientèles",
+        desc: "Les habitants et les visiteurs ne cherchent pas pareil. Le site doit répondre aux deux sans se disperser.",
+      },
+      {
+        title: "Un interlocuteur joignable",
+        desc: "Vous parlez directement à la personne qui conçoit votre site, pas à un commercial ni à un centre d'appels.",
+      },
+    ],
+
+    proofTitle: "Un exemple local",
+    proofLead:
+      "Nous n'affichons que des sites réellement en ligne, que vous pouvez ouvrir et vérifier.",
+    proofs: [
+      {
+        name: "South Street Food",
+        place: "Restauration rapide à Bayonne",
+        result:
+          "Site de commande en ligne, livraison sur Bayonne, Anglet et Biarritz, commandes reçues par email",
+        url: "https://southstreetfood.fr",
+      },
+    ],
+
+    faq: [
+      {
+        q: "Faut-il choisir une agence web locale ?",
+        a: "Pas nécessairement pour la technique : un site se conçoit très bien à distance. En revanche, pour le référencement local, connaître le territoire aide réellement : les communes qui comptent, la saisonnalité, la façon dont les clients d'ici cherchent. Et pouvoir se rencontrer facilite le démarrage d'un projet.",
+      },
+      {
+        q: "Intervenez-vous seulement au Pays Basque ?",
+        a: "Non. Nous sommes installés à Biarritz mais nous travaillons partout en France : Bretagne, Aquitaine, Ardèche, Gard, Aisne, région parisienne, Côte d'Azur. Le Pays Basque est notre base, pas notre limite.",
+      },
+      {
+        q: "Comment apparaître dans le pack local de Google ?",
+        a: "Trois éléments comptent avant tout : une fiche Google Business Profile complète et à jour, des avis clients réguliers, et la cohérence de vos coordonnées sur l'ensemble du web. Le site vient renforcer ces signaux, il ne les remplace pas. C'est gratuit à mettre en place et c'est le premier levier local.",
+      },
+      {
+        q: "Quel budget prévoir pour être visible localement ?",
+        a: "La fiche Google Business Profile et les avis ne coûtent rien, seulement du temps. Le site représente un investissement ponctuel. La publicité Google est le seul poste récurrent, et son montant dépend de la valeur d'un client pour vous. Nous vous disons avant de commencer si votre activité justifie ce budget.",
+      },
+    ],
+
+    ctaTitle: "Parlons de votre projet,",
+    ctaAccent: "on est juste à côté.",
   },
 ];
 
