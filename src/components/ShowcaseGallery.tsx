@@ -19,26 +19,35 @@ import cpCslpv from "@/assets/portfolio/cp-cslpv.jpg";
 import cpVitres from "@/assets/portfolio/cp-vitres.jpg";
 import cpVoiture from "@/assets/portfolio/cp-voiture.jpg";
 
-// Sites clients en ligne + exemples repris des sites RentyPage et CleaningPage,
-// sans noms affichés : le défilé montre le travail, les prospects n'ont rien à googler.
+/*
+ * Sites clients en ligne + exemples repris des sites RentyPage et CleaningPage,
+ * sans noms affichés : le défilé montre le travail, les prospects n'ont rien
+ * à googler.
+ *
+ * L'ordre compte. Les deux rangées se partagent la liste en pair / impair et
+ * démarrent toutes deux sur leur premier élément, donc ce sont les six
+ * premières entrées qui s'affichent à l'ouverture, notamment sur mobile où
+ * l'écran est étroit. Les créations les plus marquantes viennent donc d'abord,
+ * les plus institutionnelles à la fin.
+ */
 export const SHOWCASE = [
-  cleanelLive,
-  cpDetailedny,
-  summerpartyLive,
-  rcmLive,
-  demoLoccar,
+  cleanelLive, // rangée du haut
+  summerpartyLive, // rangée du bas
   artisaLive,
-  cpVitres,
-  cycyLive,
+  demoLoccar,
   demoCoteprivee,
+  cycyLive,
+  rcmLive,
+  cpDetailedny,
   southstreetLive,
-  cpPrestige,
-  npsLive,
   nimesLive,
-  cpVoiture,
+  cpPrestige,
   gombertoisLive,
-  flashfreeplayLive,
+  cpVoiture,
+  npsLive,
+  cpVitres,
   cpCslpv,
+  flashfreeplayLive,
 ];
 
 export function ShowcaseRow({
@@ -63,7 +72,10 @@ export function ShowcaseRow({
         {loop.map((src, i) => (
           <figure
             key={i}
-            className="relative shrink-0 h-[clamp(150px,28vh,320px)] aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden"
+            /* Sur mobile une carte plus basse : à 28vh elle occupait toute la
+               largeur de l'écran et se retrouvait coupée dès que le défilé
+               démarrait. Là on en voit une entière plus l'amorce de la suivante. */
+            className="relative shrink-0 h-[clamp(150px,24vh,210px)] sm:h-[clamp(150px,28vh,320px)] aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden"
             style={{
               boxShadow:
                 "0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.08)",
