@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ClipboardCheck, FileText, Phone, Rocket } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { AdsVisual, CodeVisual, FunnelVisual, SeoVisual } from "@/components/ExpertiseVisuals";
 
@@ -38,132 +38,16 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Cartes quasi opaques : le shader en fond ne doit jamais délaver le texte.
+// Cartes quasi opaques et PLUS CLAIRES que le fond : c'est l'écart de
+// luminosité, pas l'ombre, qui donne le relief sur un site sombre.
+// Bordure légèrement froide plutôt que blanc pur, sinon l'ensemble paraît plat.
 const cardStyle: React.CSSProperties = {
   background:
-    "linear-gradient(150deg, rgba(23, 23, 26, 0.94) 0%, rgba(13, 13, 15, 0.92) 100%)",
-  border: "1px solid hsl(0 0% 100% / 0.08)",
-  boxShadow: "inset 0 1px 0 hsl(0 0% 100% / 0.06), 0 24px 60px -24px rgba(0,0,0,0.6)",
+    "linear-gradient(150deg, rgba(28, 30, 40, 0.96) 0%, rgba(18, 19, 26, 0.94) 100%)",
+  border: "1px solid rgba(178, 192, 235, 0.11)",
+  boxShadow:
+    "inset 0 1px 0 rgba(210, 220, 255, 0.07), 0 28px 70px -28px rgba(0, 0, 0, 0.75)",
 };
-
-const ACCESS_STEPS = [
-  {
-    icon: FileText,
-    title: "Vous envoyez votre projet",
-    desc: "Quelques lignes sur votre activité et ce que vous cherchez. Deux minutes suffisent.",
-  },
-  {
-    icon: Phone,
-    title: "Entretien avec un technicien",
-    desc: "Un échange direct avec la personne qui concevra votre projet, pas un commercial.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Étude du projet",
-    desc: "On regarde ce qu'il y a à faire, ce que ça peut vous rapporter, et si nous sommes les bons pour le faire.",
-  },
-  {
-    icon: Rocket,
-    title: "Lancement",
-    desc: "Si le projet nous correspond des deux côtés, on démarre. Sinon, on vous le dit franchement.",
-  },
-];
-
-/** Timeline animée : les étapes s'allument l'une après l'autre en boucle. */
-function AccessTimeline() {
-  const reduced = useReducedMotion();
-  const LOOP = 10;
-  // fenêtre d'activation de chaque étape dans le cycle
-  const win = (i: number): [number, number] => [0.06 + i * 0.23, 0.06 + i * 0.23 + 0.2];
-
-  return (
-    <div className="rounded-3xl p-6 sm:p-10" style={cardStyle}>
-      {/* Piste de progression (desktop) */}
-      <div className="relative hidden lg:block mx-10 mb-9">
-        <div className="h-px bg-white/10" />
-        <motion.div
-          className="absolute inset-y-0 left-0 h-px origin-left bg-[#8FD0A0]"
-          style={{ width: "100%" }}
-          initial={{ scaleX: reduced ? 1 : 0 }}
-          animate={reduced ? { scaleX: 1 } : { scaleX: [0, 0.02, 0.35, 0.68, 1, 1] }}
-          transition={
-            reduced
-              ? undefined
-              : { duration: LOOP, times: [0, 0.06, 0.29, 0.52, 0.75, 1], repeat: Infinity, ease: "linear" }
-          }
-        />
-        {[0, 1, 2, 3].map((i) => {
-          const [a, b] = win(i);
-          return (
-            <motion.span
-              key={i}
-              className="absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full"
-              style={{ left: `calc(${(i / 3) * 100}% - 5px)`, background: "hsl(0 0% 100% / 0.18)" }}
-              initial={false}
-              animate={
-                reduced
-                  ? { backgroundColor: "#8FD0A0" }
-                  : { backgroundColor: ["#3a3a3e", "#3a3a3e", "#8FD0A0", "#8FD0A0"], scale: [1, 1, 1.35, 1.15] }
-              }
-              transition={reduced ? undefined : { duration: LOOP, times: [0, a, a + 0.03, 1], repeat: Infinity }}
-            />
-          );
-        })}
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-        {ACCESS_STEPS.map((s, i) => {
-          const [a, b] = win(i);
-          const Icon = s.icon;
-          return (
-            <div key={s.title} className="relative rounded-2xl p-5 sm:p-6" style={{ border: "1px solid hsl(0 0% 100% / 0.07)" }}>
-              {/* halo d'activation */}
-              {!reduced && (
-                <motion.div
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{
-                    background: "linear-gradient(165deg, rgba(143,208,160,0.09), rgba(143,208,160,0.015))",
-                    border: "1px solid rgba(143,208,160,0.35)",
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0, 1, 1, 0, 0] }}
-                  transition={{ duration: LOOP, times: [0, a, a + 0.03, b, b + 0.04, 1], repeat: Infinity }}
-                />
-              )}
-              <div className="flex items-center justify-between">
-                <span
-                  className="inline-flex items-center justify-center w-9 h-9 rounded-xl"
-                  style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
-                >
-                  <Icon className="w-4 h-4 text-foreground/80" strokeWidth={1.8} />
-                </span>
-                <span className="font-mono text-[11px] text-muted-foreground/70">0{i + 1}</span>
-              </div>
-              <h3 className="text-base sm:text-lg font-semibold text-foreground tracking-tight mt-4">
-                {s.title}
-              </h3>
-              <p className="text-muted-foreground text-sm sm:text-[15px] font-normal leading-relaxed mt-2">
-                {s.desc}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mt-8 text-center">
-        <span
-          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium text-[#8FD0A0]"
-          style={{ border: "1px solid rgba(143,208,160,0.3)" }}
-        >
-          Aucun engagement avant l'entretien
-        </span>
-        <span className="text-muted-foreground text-xs sm:text-sm font-normal">
-          Nombre limité de projets acceptés chaque mois.
-        </span>
-      </div>
-    </div>
-  );
-}
 
 const HomeSections = ({
   onApply,
@@ -200,7 +84,7 @@ const HomeSections = ({
 
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mt-12 sm:mt-16">
             <FadeUp className="h-full">
-              <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+              <article className="group h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left transition-transform duration-500 hover:-translate-y-1" style={cardStyle}>
                 <CodeVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">01</div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
@@ -219,7 +103,7 @@ const HomeSections = ({
             </FadeUp>
 
             <FadeUp delay={0.1} className="h-full">
-              <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+              <article className="group h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left transition-transform duration-500 hover:-translate-y-1" style={cardStyle}>
                 <AdsVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">02</div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
@@ -238,7 +122,7 @@ const HomeSections = ({
             </FadeUp>
 
             <FadeUp delay={0.15} className="h-full">
-              <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+              <article className="group h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left transition-transform duration-500 hover:-translate-y-1" style={cardStyle}>
                 <SeoVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">03</div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
@@ -253,7 +137,7 @@ const HomeSections = ({
             </FadeUp>
 
             <FadeUp delay={0.2} className="h-full">
-              <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+              <article className="group h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left transition-transform duration-500 hover:-translate-y-1" style={cardStyle}>
                 <FunnelVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">04</div>
                 <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
@@ -267,33 +151,6 @@ const HomeSections = ({
               </article>
             </FadeUp>
           </div>
-        </div>
-      </section>
-
-      {/* Accès sur candidature */}
-      <section id="acces" className="py-24 sm:py-32">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="text-center">
-            <FadeUp>
-              <SectionLabel>Méthode</SectionLabel>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground mt-5">
-                Un accès sur candidature.
-              </h2>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
-                Nous ne pouvons pas travailler avec tout le monde. Chaque projet
-                est étudié, et nous n'avançons que si nous sommes réellement les
-                bons pour le mener.
-              </p>
-            </FadeUp>
-          </div>
-
-          <FadeUp delay={0.15} className="mt-12 sm:mt-16">
-            <AccessTimeline />
-          </FadeUp>
         </div>
       </section>
 

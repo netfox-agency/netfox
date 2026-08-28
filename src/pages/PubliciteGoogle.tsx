@@ -43,9 +43,10 @@ function FadeUp({
 
 const glassStyle: React.CSSProperties = {
   background:
-    "linear-gradient(150deg, hsl(0 0% 100% / 0.05) 0%, hsl(0 0% 100% / 0.015) 100%)",
-  border: "1px solid hsl(0 0% 100% / 0.08)",
-  boxShadow: "inset 0 1px 0 hsl(0 0% 100% / 0.06)",
+    "linear-gradient(150deg, rgba(28, 30, 40, 0.92) 0%, rgba(18, 19, 26, 0.9) 100%)",
+  border: "1px solid rgba(178, 192, 235, 0.11)",
+  boxShadow:
+    "inset 0 1px 0 rgba(210, 220, 255, 0.07), 0 28px 70px -28px rgba(0, 0, 0, 0.75)",
 };
 
 const METHOD = [
@@ -81,51 +82,12 @@ const METHOD = [
   },
 ];
 
-type Stat = { num: number; decimals?: number; suffix?: string; label: string; note?: string };
-
 // Retours sur investissement constatés (chiffres fournis par Netfox).
 const ROI_STRIP = [
   { name: "Summer Party", sector: "Événementiel", num: 2.4, decimals: 1, note: "moyenne toutes campagnes" },
   { name: "NPS Acoustique", sector: "B2B industriel", num: 7.5, decimals: 1, note: "dès le premier mois" },
   { name: "Top Service", sector: "Nettoyage de toitures", num: 5.5, decimals: 1, note: "lissé sur l'année" },
   { name: "CleaningPage", sector: "Plateforme SaaS", num: 3, decimals: 0, note: "moyenne" },
-];
-
-const REPORTS: {
-  name: string;
-  sector: string;
-  badge: string;
-  stats: Stat[];
-  context: string;
-}[] = [
-  {
-    name: "Summer Party",
-    sector: "Événementiel nightlife · Malte & Albanie",
-    badge: "90 derniers jours · données Google Ads",
-    stats: [
-      { num: 69400, label: "Impressions" },
-      { num: 7410, label: "Clics" },
-      { num: 10.7, decimals: 1, suffix: " %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
-      { num: 0.56, decimals: 2, suffix: " €", label: "Coût par clic moyen" },
-      { num: 1951, label: "Passages en billetterie" },
-      { num: 2.13, decimals: 2, suffix: " €", label: "Coût par passage" },
-    ],
-    context:
-      "Pages de destination créées sur mesure, tracking billetterie et gestion complète des campagnes multilingues (FR, EN, IT), par soirée et par ville. 4 165 € investis sur 90 jours, 1 951 passages en billetterie mesurés et un retour moyen de ×2,4 sur l'ensemble des campagnes.",
-  },
-  {
-    name: "NPS Acoustique",
-    sector: "Distributeur industriel B2B · Isolation acoustique",
-    badge: "Campagne en cours · premiers résultats",
-    stats: [
-      { num: 2000, label: "Impressions" },
-      { num: 140, label: "Clics" },
-      { num: 7.0, decimals: 1, suffix: " %", label: "Taux de clic", note: "moyenne du secteur : 3 à 5 %" },
-      { num: 1.33, decimals: 2, suffix: " €", label: "Coût par clic moyen" },
-    ],
-    context:
-      "Marché de niche B2B où chaque contact vaut cher. Structure, annonces et suivi posés dès le départ : ×7,5 de retour sur investissement dès le premier mois de campagne.",
-  },
 ];
 
 const PubliciteGoogle = () => {
@@ -317,8 +279,9 @@ const PubliciteGoogle = () => {
               </FadeUp>
               <FadeUp delay={0.2}>
                 <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
-                  Retours sur investissement constatés chez nos clients, et
-                  extraits directs de nos comptes Google Ads.
+                  Retours sur investissement constatés chez nos clients, campagnes
+                  gérées de bout en bout : stratégie, annonces, pages dédiées et
+                  tracking.
                 </p>
               </FadeUp>
             </div>
@@ -357,64 +320,11 @@ const PubliciteGoogle = () => {
               </p>
             </FadeUp>
 
-            <div className="space-y-6 sm:space-y-8 mt-12 sm:mt-16">
-              {REPORTS.map((r, ri) => (
-                <FadeUp key={r.name} delay={ri * 0.1}>
-                  <article className="rounded-3xl p-7 sm:p-10" style={glassStyle}>
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-semibold text-foreground tracking-tight">
-                          {r.name}
-                        </h3>
-                        <p className="text-muted-foreground text-xs sm:text-sm font-normal mt-1">
-                          {r.sector}
-                        </p>
-                      </div>
-                      <span
-                        className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] font-medium text-foreground/70 rounded-full px-3.5 py-1.5"
-                        style={{ border: "1px solid hsl(0 0% 100% / 0.14)" }}
-                      >
-                        {r.badge}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 mt-7 sm:mt-9">
-                      {r.stats.map((s) => (
-                        <div
-                          key={s.label}
-                          className="rounded-2xl px-5 py-5 sm:px-6 sm:py-6"
-                          style={{
-                            background: "hsl(0 0% 100% / 0.03)",
-                            border: "1px solid hsl(0 0% 100% / 0.06)",
-                          }}
-                        >
-                          <div className="text-2xl sm:text-4xl font-semibold tracking-tight text-foreground tabular-nums">
-                            <CountUpValue value={s.num} decimals={s.decimals ?? 0} suffix={s.suffix ?? ""} />
-                          </div>
-                          <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground mt-2">
-                            {s.label}
-                          </div>
-                          {s.note && (
-                            <div className="text-[11px] sm:text-xs font-normal text-foreground/55 mt-1.5">
-                              {s.note}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-7 max-w-3xl">
-                      {r.context}
-                    </p>
-                  </article>
-                </FadeUp>
-              ))}
-            </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="relative py-24 sm:py-36 px-5 sm:px-8">
+        <section className="relative pt-8 pb-24 sm:pt-12 sm:pb-36 px-5 sm:px-8">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[420px] rounded-full"

@@ -28,9 +28,11 @@ const Index = () => {
   return (
     <div className="relative flex flex-col" style={{ background: 'transparent' }}>
       <WebGLShader />
+      {/* Voile teinté comme le fond du site (pas du noir pur), sinon la
+          bascule entre le shader et les sections se voit. */}
       <motion.div
         aria-hidden="true"
-        className="fixed inset-0 pointer-events-none bg-black"
+        className="fixed inset-0 pointer-events-none bg-background"
         style={{ opacity: dimOpacity, zIndex: 0 }}
       />
 
@@ -41,9 +43,10 @@ const Index = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative w-full max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 md:py-20 lg:py-24 rounded-2xl"
           style={{
-            border: '1px solid hsl(0 0% 100% / 0.08)',
-            background: 'hsl(0 0% 0% / 0.45)',
+            border: '1px solid rgba(178, 192, 235, 0.12)',
+            background: 'rgba(10, 11, 16, 0.5)',
             backdropFilter: 'blur(10px)',
+            boxShadow: 'inset 0 1px 0 rgba(210, 220, 255, 0.07)',
           }}
         >
           {/* Typing Effect Title */}
