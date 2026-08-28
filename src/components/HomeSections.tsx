@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ClipboardCheck, FileText, MonitorSmartphone, Rocket } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ClipboardCheck, FileText, Phone, Rocket } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { AdsVisual, CodeVisual, FunnelVisual, SeoVisual } from "@/components/ExpertiseVisuals";
 
@@ -49,23 +49,23 @@ const cardStyle: React.CSSProperties = {
 const ACCESS_STEPS = [
   {
     icon: FileText,
-    title: "Candidature",
-    desc: "Vous décrivez votre projet en quelques lignes. Deux minutes suffisent.",
+    title: "Vous envoyez votre projet",
+    desc: "Quelques lignes sur votre activité et ce que vous cherchez. Deux minutes suffisent.",
+  },
+  {
+    icon: Phone,
+    title: "Entretien avec un technicien",
+    desc: "Un échange direct avec la personne qui concevra votre projet, pas un commercial.",
   },
   {
     icon: ClipboardCheck,
-    title: "Étude personnelle",
-    desc: "Chaque demande est étudiée une par une. Réponse sous 24 h.",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Maquette privée",
-    desc: "Vous découvrez votre futur site en ligne, avant tout engagement.",
+    title: "Étude du projet",
+    desc: "On regarde ce qu'il y a à faire, ce que ça peut vous rapporter, et si nous sommes les bons pour le faire.",
   },
   {
     icon: Rocket,
     title: "Lancement",
-    desc: "Mise en ligne, référencement, acquisition. Nous concevons, vous performez.",
+    desc: "Si le projet nous correspond des deux côtés, on démarre. Sinon, on vous le dit franchement.",
   },
 ];
 
@@ -155,7 +155,7 @@ function AccessTimeline() {
           className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium text-[#8FD0A0]"
           style={{ border: "1px solid rgba(143,208,160,0.3)" }}
         >
-          Vous voyez votre site avant de vous engager
+          Aucun engagement avant l'entretien
         </span>
         <span className="text-muted-foreground text-xs sm:text-sm font-normal">
           Nombre limité de projets acceptés chaque mois.
@@ -284,8 +284,9 @@ const HomeSections = ({
             </FadeUp>
             <FadeUp delay={0.2}>
               <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
-                Vous voyez votre futur site avant de vous engager. C'est notre
-                façon de travailler depuis le premier jour.
+                Nous ne pouvons pas travailler avec tout le monde. Chaque projet
+                est étudié, et nous n'avançons que si nous sommes réellement les
+                bons pour le mener.
               </p>
             </FadeUp>
           </div>

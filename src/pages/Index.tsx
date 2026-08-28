@@ -62,7 +62,9 @@ const Index = () => {
               </span>
               <TypingEffect
                 texts={["Créons le futur.", "L'excellence digitale."]}
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tight text-foreground w-full"
+                /* Taille plafonnée : au-delà, « L'excellence digitale. » passe
+                   sur deux lignes et fait sauter tout le bloc à chaque rotation. */
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground w-full text-balance"
                 typingSpeed={100}
                 rotationInterval={3500}
               />
