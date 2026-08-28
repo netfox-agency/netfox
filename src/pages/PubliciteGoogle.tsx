@@ -164,9 +164,8 @@ const PubliciteGoogle = () => {
                 className="lg:col-span-8 text-[2.6rem] sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.02]"
               >
                 Être premier sur Google,
-                <br />
-                au moment exact où
-                <br />
+                <br className="hidden sm:block" /> au moment exact où{" "}
+                <br className="hidden sm:block" />
                 <span className="font-serif italic font-normal tracking-tight">
                   l'on vous cherche.
                 </span>
@@ -204,7 +203,7 @@ const PubliciteGoogle = () => {
         </section>
 
         {/* ── Bascule : une phrase, pleine largeur, décalée ── */}
-        <section className="py-20 sm:py-32 px-5 sm:px-8">
+        <section className="py-14 sm:py-32 px-5 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <FadeUp>
               <p className="max-w-4xl text-[1.6rem] sm:text-4xl md:text-[2.9rem] font-semibold tracking-tight leading-[1.15] text-foreground">
@@ -227,7 +226,7 @@ const PubliciteGoogle = () => {
             {CHAPTERS.map((c, i) => (
               <FadeUp key={c.num}>
                 <article
-                  className={`grid lg:grid-cols-12 gap-y-8 gap-x-12 items-center py-16 sm:py-24 border-t ${
+                  className={`grid lg:grid-cols-12 gap-y-8 gap-x-12 items-center py-12 sm:py-24 border-t ${
                     i === CHAPTERS.length - 1 ? "border-b" : ""
                   }`}
                   style={{ borderColor: "rgba(178, 192, 235, 0.1)" }}
@@ -262,7 +261,7 @@ const PubliciteGoogle = () => {
         </section>
 
         {/* ── Résultats : chiffres composés, séparateurs fins, aucune carte ── */}
-        <section className="py-20 sm:py-32 px-5 sm:px-8">
+        <section className="py-14 sm:py-32 px-5 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <FadeUp>
               <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground max-w-2xl leading-[1.08]">
@@ -300,7 +299,7 @@ const PubliciteGoogle = () => {
             </div>
 
             <FadeUp delay={0.3}>
-              <p className="text-muted-foreground text-sm font-normal mt-10">
+              <p className="text-muted-foreground text-sm font-normal mt-8">
                 Et bien d'autres. Campagnes gérées de bout en bout : stratégie,
                 annonces, pages dédiées et tracking.
               </p>
@@ -309,7 +308,7 @@ const PubliciteGoogle = () => {
         </section>
 
         {/* ── Clôture ── */}
-        <section className="py-24 sm:py-40 px-5 sm:px-8">
+        <section className="pt-10 pb-20 sm:py-40 px-5 sm:px-8">
           <div className="max-w-6xl mx-auto">
             <FadeUp>
               <h2 className="text-[2.2rem] sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.06] max-w-4xl">

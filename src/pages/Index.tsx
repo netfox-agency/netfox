@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { WebGLShader } from "@/components/ui/web-gl-shader";
@@ -16,6 +16,7 @@ const Index = () => {
   // pour préserver le contraste des textes (voile lié au scroll).
   const { scrollY } = useScroll();
   const dimOpacity = useTransform(scrollY, [0, 500, 900], [0, 0.35, 0.72]);
+  const reduced = useReducedMotion();
 
   // Les liens profonds (netfox.ai/#realisations) ne scrollent pas seuls dans
   // une SPA : l'ancre n'existe pas encore au moment du scroll initial du navigateur.
@@ -115,6 +116,25 @@ const Index = () => {
             </button>
           </motion.div>
         </motion.div>
+
+        {/* Repère de défilement : sans lui, le splash occupe tout l'écran d'un
+            téléphone et rien n'indique qu'il y a la suite en dessous. */}
+        <motion.a
+          href="#services"
+          aria-label="Découvrir la suite"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.8 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center justify-center w-11 h-11"
+        >
+          <motion.span
+            className="flex items-start justify-center w-6 h-9 rounded-full border border-foreground/25 pt-2"
+            animate={reduced ? undefined : { y: [0, 6, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="w-1 h-1.5 rounded-full bg-foreground/50" />
+          </motion.span>
+        </motion.a>
       </main>
 
       <HomeSections
