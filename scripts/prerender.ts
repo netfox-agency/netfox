@@ -19,6 +19,8 @@ import { resolve } from "path";
 import { VERTICALS } from "../src/content/verticals";
 
 const SITE = "https://netfox.ai";
+const OG_TITLE = "NETFOX · Maison digitale";
+const OG_DESC = "L'art de l'acquisition de clients en ligne.";
 
 type Route = {
   path: string;
@@ -28,6 +30,11 @@ type Route = {
   body: string;
   /** Balisage JSON-LD propre à la page, en plus du graphe global. */
   jsonLd?: object;
+  /** Titre et texte affichés quand le lien est partagé. Volontairement
+   *  différents du titre SEO : ils s'adressent à un humain, pas à Google,
+   *  et doivent porter la marque plutôt qu'un intitulé de page. */
+  ogTitle?: string;
+  ogDescription?: string;
   noindex?: boolean;
 };
 
@@ -38,6 +45,9 @@ const routes: Route[] = [
   {
     path: "/publicite-google",
     title: "Publicité Google pour artisans et PME · Netfox",
+    ogTitle: "NETFOX · Publicité Google",
+    ogDescription:
+      "Être premier au moment exact où l'on vous cherche. ×2,4 à ×7,5 de retour constaté chez nos clients.",
     description:
       "Être premier sur Google au moment exact où l'on vous cherche. Notre méthode en cinq points et les retours sur investissement constatés chez nos clients : ×2,4 à ×7,5.",
     jsonLd: {
@@ -143,11 +153,11 @@ for (const r of routes) {
   );
   html = html.replace(
     /<meta property="og:title" content="[\s\S]*?" \/>/,
-    `<meta property="og:title" content="${esc(r.title)}" />`
+    `<meta property="og:title" content="${esc(r.ogTitle ?? OG_TITLE)}" />`
   );
   html = html.replace(
     /<meta property="og:description" content="[\s\S]*?" \/>/,
-    `<meta property="og:description" content="${esc(r.description)}" />`
+    `<meta property="og:description" content="${esc(r.ogDescription ?? OG_DESC)}" />`
   );
 
   if (r.noindex) {
