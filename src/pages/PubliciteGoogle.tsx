@@ -182,14 +182,14 @@ const PubliciteGoogle = () => {
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-[13px] font-medium text-foreground/70 hover:text-foreground transition-colors pl-2"
+            className="flex items-center gap-2 min-h-[44px] text-[13px] font-medium text-foreground/70 hover:text-foreground transition-colors pl-2"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.6} />
             <span className="text-sm font-medium tracking-[0.22em] text-foreground">NETFOX</span>
           </Link>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="rounded-full bg-foreground text-background text-[13px] font-semibold px-4 sm:px-5 py-2 transition-all duration-300 hover:bg-white hover:shadow-[0_8px_30px_-8px_rgba(255,255,255,0.35)]"
+            className="rounded-full bg-foreground text-background text-[13px] font-semibold px-4 sm:px-5 min-h-[40px] transition-all duration-300 hover:bg-white hover:shadow-[0_8px_30px_-8px_rgba(255,255,255,0.35)]"
           >
             Créer votre projet
           </button>
@@ -448,8 +448,11 @@ const PubliciteGoogle = () => {
         </section>
       </main>
 
-      <footer className="py-8 px-5 text-center text-xs text-muted-foreground/60 font-light">
-        <Link to="/" className="link-underline hover:text-foreground/80 transition-colors">
+      <footer className="py-8 px-5 text-center text-xs text-muted-foreground font-light">
+        <Link
+          to="/"
+          className="link-underline hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]"
+        >
           © Netfox · Retour à l'accueil
         </Link>
       </footer>

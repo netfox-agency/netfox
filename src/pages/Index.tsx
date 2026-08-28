@@ -53,12 +53,20 @@ const Index = () => {
             transition={{ duration: 1.2, delay: 0.4 }}
             className="w-full overflow-hidden"
           >
-            <TypingEffect
-              texts={["Créons le futur.", "L'excellence digitale."]}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tight text-foreground w-full"
-              typingSpeed={100}
-              rotationInterval={3500}
-            />
+            {/* h1 : le titre visible est un effet machine à écrire, le texte
+                complet reste lisible par les moteurs et lecteurs d'écran */}
+            <h1>
+              <span className="sr-only">
+                Netfox, la maison digitale qui aide les entreprises à obtenir
+                plus de clients grâce à Internet et aux IA
+              </span>
+              <TypingEffect
+                texts={["Créons le futur.", "L'excellence digitale."]}
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tight text-foreground w-full"
+                typingSpeed={100}
+                rotationInterval={3500}
+              />
+            </h1>
           </motion.div>
 
           {/* Subtitle */}
@@ -96,7 +104,7 @@ const Index = () => {
           >
             <button
               onClick={() => setIsGalleryOpen(true)}
-              className="link-underline text-foreground/60 hover:text-foreground text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-300"
+              className="link-underline text-foreground/60 hover:text-foreground text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-300 py-3 px-2 -my-3"
             >
               Voir les réalisations
             </button>
@@ -124,10 +132,10 @@ const Index = () => {
             <span className="hidden sm:inline font-light">L'excellence digitale</span>
           </div>
           <div className="flex items-center gap-6">
-            <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors">
+            <a href="mailto:contact@netfox-agency.com" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               contact@netfox-agency.com
             </a>
-            <a href="/mentions-legales" className="link-underline font-light hover:text-foreground/80 transition-colors">
+            <a href="/mentions-legales" className="link-underline font-light hover:text-foreground/80 transition-colors inline-flex items-center min-h-[44px]">
               Mentions légales
             </a>
           </div>
