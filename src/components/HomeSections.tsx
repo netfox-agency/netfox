@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ClipboardCheck, FileText, MonitorSmartphone, Rocket } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { AdsVisual, CodeVisual, FunnelVisual, SeoVisual } from "@/components/ExpertiseVisuals";
 
@@ -48,26 +48,122 @@ const cardStyle: React.CSSProperties = {
 
 const ACCESS_STEPS = [
   {
-    num: "01",
+    icon: FileText,
     title: "Candidature",
     desc: "Vous décrivez votre projet en quelques lignes. Deux minutes suffisent.",
   },
   {
-    num: "02",
-    title: "Étude",
-    desc: "Chaque demande est étudiée personnellement. Réponse sous 24 h.",
+    icon: ClipboardCheck,
+    title: "Étude personnelle",
+    desc: "Chaque demande est étudiée une par une. Réponse sous 24 h.",
   },
   {
-    num: "03",
-    title: "Conception",
-    desc: "Vous découvrez une maquette privée de votre futur site, avant tout engagement.",
+    icon: MonitorSmartphone,
+    title: "Maquette privée",
+    desc: "Vous découvrez votre futur site en ligne, avant tout engagement.",
   },
   {
-    num: "04",
+    icon: Rocket,
     title: "Lancement",
     desc: "Mise en ligne, référencement, acquisition. Nous concevons, vous performez.",
   },
 ];
+
+/** Timeline animée : les étapes s'allument l'une après l'autre en boucle. */
+function AccessTimeline() {
+  const reduced = useReducedMotion();
+  const LOOP = 10;
+  // fenêtre d'activation de chaque étape dans le cycle
+  const win = (i: number): [number, number] => [0.06 + i * 0.23, 0.06 + i * 0.23 + 0.2];
+
+  return (
+    <div className="rounded-3xl p-6 sm:p-10" style={cardStyle}>
+      {/* Piste de progression (desktop) */}
+      <div className="relative hidden lg:block mx-10 mb-9">
+        <div className="h-px bg-white/10" />
+        <motion.div
+          className="absolute inset-y-0 left-0 h-px origin-left bg-[#8FD0A0]"
+          style={{ width: "100%" }}
+          initial={{ scaleX: reduced ? 1 : 0 }}
+          animate={reduced ? { scaleX: 1 } : { scaleX: [0, 0.02, 0.35, 0.68, 1, 1] }}
+          transition={
+            reduced
+              ? undefined
+              : { duration: LOOP, times: [0, 0.06, 0.29, 0.52, 0.75, 1], repeat: Infinity, ease: "linear" }
+          }
+        />
+        {[0, 1, 2, 3].map((i) => {
+          const [a, b] = win(i);
+          return (
+            <motion.span
+              key={i}
+              className="absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full"
+              style={{ left: `calc(${(i / 3) * 100}% - 5px)`, background: "hsl(0 0% 100% / 0.18)" }}
+              initial={false}
+              animate={
+                reduced
+                  ? { backgroundColor: "#8FD0A0" }
+                  : { backgroundColor: ["#3a3a3e", "#3a3a3e", "#8FD0A0", "#8FD0A0"], scale: [1, 1, 1.35, 1.15] }
+              }
+              transition={reduced ? undefined : { duration: LOOP, times: [0, a, a + 0.03, 1], repeat: Infinity }}
+            />
+          );
+        })}
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {ACCESS_STEPS.map((s, i) => {
+          const [a, b] = win(i);
+          const Icon = s.icon;
+          return (
+            <div key={s.title} className="relative rounded-2xl p-5 sm:p-6" style={{ border: "1px solid hsl(0 0% 100% / 0.07)" }}>
+              {/* halo d'activation */}
+              {!reduced && (
+                <motion.div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{
+                    background: "linear-gradient(165deg, rgba(143,208,160,0.09), rgba(143,208,160,0.015))",
+                    border: "1px solid rgba(143,208,160,0.35)",
+                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0, 1, 1, 0, 0] }}
+                  transition={{ duration: LOOP, times: [0, a, a + 0.03, b, b + 0.04, 1], repeat: Infinity }}
+                />
+              )}
+              <div className="flex items-center justify-between">
+                <span
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-xl"
+                  style={{ background: "hsl(0 0% 100% / 0.06)", border: "1px solid hsl(0 0% 100% / 0.1)" }}
+                >
+                  <Icon className="w-4 h-4 text-foreground/80" strokeWidth={1.8} />
+                </span>
+                <span className="font-mono text-[11px] text-muted-foreground/70">0{i + 1}</span>
+              </div>
+              <h3 className="text-base sm:text-lg font-semibold text-foreground tracking-tight mt-4">
+                {s.title}
+              </h3>
+              <p className="text-muted-foreground text-sm sm:text-[15px] font-normal leading-relaxed mt-2">
+                {s.desc}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mt-8 text-center">
+        <span
+          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium text-[#8FD0A0]"
+          style={{ border: "1px solid rgba(143,208,160,0.3)" }}
+        >
+          Vous voyez votre site avant de vous engager
+        </span>
+        <span className="text-muted-foreground text-xs sm:text-sm font-normal">
+          Nombre limité de projets acceptés chaque mois.
+        </span>
+      </div>
+    </div>
+  );
+}
 
 const HomeSections = ({
   onApply,
@@ -188,29 +284,15 @@ const HomeSections = ({
             </FadeUp>
             <FadeUp delay={0.2}>
               <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
-                Pour préserver la qualité de chaque création, un nombre limité
-                de projets est accepté chaque mois.
+                Vous voyez votre futur site avant de vous engager. C'est notre
+                façon de travailler depuis le premier jour.
               </p>
             </FadeUp>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 mt-12 sm:mt-16">
-            {ACCESS_STEPS.map((s, i) => (
-              <FadeUp key={s.num} delay={i * 0.1}>
-                <div className="border-t border-white/10 pt-6 text-left">
-                  <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">
-                    {s.num}
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-foreground mt-3 tracking-tight">
-                    {s.title}
-                  </h3>
-                  <p className="text-muted-foreground text-[15px] font-normal leading-relaxed mt-3">
-                    {s.desc}
-                  </p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
+          <FadeUp delay={0.15} className="mt-12 sm:mt-16">
+            <AccessTimeline />
+          </FadeUp>
         </div>
       </section>
 

@@ -214,7 +214,7 @@ const PubliciteGoogle = () => {
               transition={{ duration: 1, delay: 0.45, ease: EASE }}
               className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.04] mt-6"
             >
-              Être premier sur Google,
+              Être <span className="text-[#8FD0A0]">premier</span> sur Google,
               <br />
               au moment exact où
               <br />
@@ -279,12 +279,12 @@ const PubliciteGoogle = () => {
               {METHOD.map((m, i) => (
                 <FadeUp key={m.num} delay={i * 0.05}>
                   <div
-                    className="grid md:grid-cols-[minmax(260px,320px)_1fr] gap-5 md:gap-8 items-center rounded-3xl p-5 sm:p-7"
+                    className="grid md:grid-cols-[minmax(260px,320px)_1fr] gap-5 md:gap-8 items-center rounded-3xl p-5 sm:p-7 transition-transform duration-300 hover:-translate-y-1"
                     style={glassStyle}
                   >
                     {m.visual}
                     <div className="px-1 sm:px-0">
-                      <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">
+                      <div className="font-mono text-[11px] tracking-[0.25em] text-[#8FD0A0]/90">
                         {m.num}
                       </div>
                       <h3 className="text-lg sm:text-2xl font-semibold text-foreground tracking-tight mt-2.5">
@@ -328,8 +328,12 @@ const PubliciteGoogle = () => {
               {ROI_STRIP.map((r, i) => (
                 <FadeUp key={r.name} delay={i * 0.08} className="h-full">
                   <div
-                    className="h-full rounded-3xl px-5 py-6 sm:px-7 sm:py-8 text-center"
-                    style={glassStyle}
+                    className="h-full rounded-3xl px-5 py-6 sm:px-7 sm:py-8 text-center transition-transform duration-300 hover:-translate-y-1"
+                    style={{
+                      ...glassStyle,
+                      background:
+                        "radial-gradient(130% 100% at 50% 0%, rgba(143, 208, 160, 0.09) 0%, rgba(255, 255, 255, 0.02) 55%)",
+                    }}
                   >
                     <div className="text-4xl sm:text-5xl font-semibold tracking-tight text-[#8FD0A0] tabular-nums">
                       <CountUpValue value={r.num} decimals={r.decimals} prefix="×" />
@@ -410,8 +414,13 @@ const PubliciteGoogle = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 sm:py-36 px-5 sm:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="relative py-24 sm:py-36 px-5 sm:px-8">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[420px] rounded-full"
+            style={{ background: "radial-gradient(closest-side, rgba(143, 208, 160, 0.09), transparent)" }}
+          />
+          <div className="relative max-w-3xl mx-auto text-center">
             <FadeUp>
               <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground leading-[1.1]">
                 Faites partie de ceux qui sont

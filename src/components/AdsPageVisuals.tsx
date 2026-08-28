@@ -55,7 +55,14 @@ export function HeroSearchDemo() {
   const SHIFT = 78;
   const t = { duration: LOOP, times: [0, 0.24, 0.38, 1], repeat: Infinity, ease: EASE };
   return (
-    <Panel className="max-w-2xl mx-auto">
+    <div
+      className="max-w-2xl mx-auto rounded-2xl"
+      style={{
+        boxShadow:
+          "0 50px 160px -40px rgba(143, 208, 160, 0.22), 0 24px 70px -30px rgba(0, 0, 0, 0.8)",
+      }}
+    >
+      <Panel>
       <div className="px-5 sm:px-7 pt-5 pb-6">
         {/* Barre de recherche */}
         <div
@@ -137,7 +144,8 @@ export function HeroSearchDemo() {
           Position n°1 · payée au clic uniquement
         </div>
       </div>
-    </Panel>
+      </Panel>
+    </div>
   );
 }
 
