@@ -142,7 +142,7 @@ const PubliciteGoogle = () => {
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-[13px] font-light text-foreground/70 hover:text-foreground transition-colors pl-2"
+            className="flex items-center gap-2 text-[13px] font-medium text-foreground/70 hover:text-foreground transition-colors pl-2"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.6} />
             <span className="text-sm font-medium tracking-[0.22em] text-foreground">NETFOX</span>
@@ -164,7 +164,7 @@ const PubliciteGoogle = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-              className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-light"
+              className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium"
             >
               Publicité Google
             </motion.p>
@@ -172,7 +172,7 @@ const PubliciteGoogle = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.45, ease: EASE }}
-              className="text-4xl sm:text-6xl md:text-7xl font-extralight tracking-tighter text-foreground leading-[1.04] mt-6"
+              className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground leading-[1.04] mt-6"
             >
               Être premier sur Google,
               <br />
@@ -184,7 +184,7 @@ const PubliciteGoogle = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.65, ease: EASE }}
-              className="text-muted-foreground text-base sm:text-lg font-light leading-relaxed tracking-wide max-w-2xl mx-auto mt-7"
+              className="text-muted-foreground text-base sm:text-lg font-normal leading-relaxed max-w-2xl mx-auto mt-7"
             >
               Le principe est simple : vous payez Google pour apparaître tout en
               haut des résultats, et vous ne payez que lorsqu'un client clique.
@@ -198,7 +198,7 @@ const PubliciteGoogle = () => {
         <section className="py-16 sm:py-24 px-5 sm:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeUp>
-              <p className="text-foreground text-xl sm:text-2xl md:text-[1.7rem] font-light leading-relaxed tracking-tight">
+              <p className="text-foreground text-xl sm:text-2xl md:text-[1.7rem] font-normal leading-relaxed tracking-tight">
                 Mais être premier ne suffit pas. Sans stratégie, une campagne
                 dépense. Avec la bonne méthode, elle rapporte. Toute la
                 différence se joue sur cinq points.
@@ -212,12 +212,12 @@ const PubliciteGoogle = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <FadeUp>
-                <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-light">
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium">
                   La méthode
                 </p>
               </FadeUp>
               <FadeUp delay={0.1}>
-                <h2 className="text-3xl sm:text-5xl font-extralight tracking-tighter text-foreground mt-5">
+                <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground mt-5">
                   Cinq points, zéro improvisation.
                 </h2>
               </FadeUp>
@@ -231,10 +231,10 @@ const PubliciteGoogle = () => {
                       {m.num}
                     </div>
                     <div>
-                      <h3 className="text-lg sm:text-xl font-light text-foreground tracking-tight">
+                      <h3 className="text-lg sm:text-xl font-semibold text-foreground tracking-tight">
                         {m.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-2">
+                      <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-2">
                         {m.desc}
                       </p>
                     </div>
@@ -250,17 +250,17 @@ const PubliciteGoogle = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <FadeUp>
-                <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-light">
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium">
                   Résultats réels
                 </p>
               </FadeUp>
               <FadeUp delay={0.1}>
-                <h2 className="text-3xl sm:text-5xl font-extralight tracking-tighter text-foreground mt-5">
+                <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground mt-5">
                   Les chiffres, pas les promesses.
                 </h2>
               </FadeUp>
               <FadeUp delay={0.2}>
-                <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl mx-auto mt-5">
+                <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
                   Extraits directs de nos comptes Google Ads. D'autres études de
                   cas sont en cours d'ajout.
                 </p>
@@ -273,15 +273,15 @@ const PubliciteGoogle = () => {
                   <article className="rounded-3xl p-7 sm:p-10" style={glassStyle}>
                     <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
                       <div>
-                        <h3 className="text-xl sm:text-2xl font-light text-foreground tracking-tight">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-foreground tracking-tight">
                           {r.name}
                         </h3>
-                        <p className="text-muted-foreground text-xs sm:text-sm font-light mt-1">
+                        <p className="text-muted-foreground text-xs sm:text-sm font-normal mt-1">
                           {r.sector}
                         </p>
                       </div>
                       <span
-                        className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] font-light text-foreground/60 rounded-full px-3.5 py-1.5"
+                        className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] font-medium text-foreground/70 rounded-full px-3.5 py-1.5"
                         style={{ border: "1px solid hsl(0 0% 100% / 0.14)" }}
                       >
                         {r.badge}
@@ -298,14 +298,14 @@ const PubliciteGoogle = () => {
                             border: "1px solid hsl(0 0% 100% / 0.06)",
                           }}
                         >
-                          <div className="text-2xl sm:text-4xl font-light tracking-tight text-foreground">
+                          <div className="text-2xl sm:text-4xl font-semibold tracking-tight text-foreground">
                             {s.value}
                           </div>
-                          <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-light text-muted-foreground mt-2">
+                          <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] font-medium text-muted-foreground mt-2">
                             {s.label}
                           </div>
                           {s.note && (
-                            <div className="text-[11px] sm:text-xs font-light text-foreground/45 mt-1.5">
+                            <div className="text-[11px] sm:text-xs font-normal text-foreground/55 mt-1.5">
                               {s.note}
                             </div>
                           )}
@@ -313,7 +313,7 @@ const PubliciteGoogle = () => {
                       ))}
                     </div>
 
-                    <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-7 max-w-3xl">
+                    <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-7 max-w-3xl">
                       {r.context}
                     </p>
                   </article>
@@ -327,13 +327,13 @@ const PubliciteGoogle = () => {
         <section className="py-24 sm:py-36 px-5 sm:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <FadeUp>
-              <h2 className="text-3xl sm:text-5xl font-extralight tracking-tighter text-foreground">
+              <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground">
                 Et si vos clients vous
                 <br /> trouvaient en premier ?
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg mx-auto mt-6">
+              <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-lg mx-auto mt-6">
                 Décrivez votre activité et votre zone. On vous dit honnêtement
                 si Google Ads est rentable pour vous, réponse sous 24 h.
               </p>

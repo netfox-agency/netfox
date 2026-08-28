@@ -124,7 +124,7 @@ export function ExamplesGallery({ isOpen, onClose }: GalleryProps) {
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center justify-between gap-4 px-5 sm:px-10 pt-5 sm:pt-8 pb-2"
           >
-            <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/50 font-light">
+            <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/60 font-medium">
               Sites & design · Une sélection de créations
             </div>
             <button
@@ -166,7 +166,7 @@ export function ExamplesGallery({ isOpen, onClose }: GalleryProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/40 font-light pb-6 sm:pb-8"
+            className="text-center text-[10px] sm:text-xs uppercase tracking-[0.3em] text-foreground/50 font-medium pb-6 sm:pb-8"
           >
             Chaque création est en ligne et travaille pour son entreprise · ESC pour fermer
           </motion.div>

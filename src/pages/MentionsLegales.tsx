@@ -17,13 +17,13 @@ const MentionsLegales = () => {
           ← Retour au site
         </Link>
 
-        <h1 className="text-3xl sm:text-4xl font-extralight tracking-tight text-foreground mt-8">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground mt-8">
           Mentions légales
         </h1>
 
-        <div className="mt-10 space-y-10 text-sm sm:text-base font-light leading-relaxed text-foreground/60">
+        <div className="mt-10 space-y-10 text-[15px] sm:text-base font-normal leading-relaxed text-foreground/65">
           <section>
-            <h2 className="text-foreground text-lg font-light mb-3">Éditeur du site</h2>
+            <h2 className="text-foreground text-lg font-semibold mb-3">Éditeur du site</h2>
             <p>
               Netfox, entreprise individuelle.
               <br />
@@ -35,7 +35,7 @@ const MentionsLegales = () => {
           </section>
 
           <section>
-            <h2 className="text-foreground text-lg font-light mb-3">Hébergement</h2>
+            <h2 className="text-foreground text-lg font-semibold mb-3">Hébergement</h2>
             {/* TODO: confirmer l'hébergeur réel (Lovable ou autre) avant mise en ligne */}
             <p>
               Ce site est hébergé par Lovable Labs Inc.
@@ -45,7 +45,7 @@ const MentionsLegales = () => {
           </section>
 
           <section>
-            <h2 className="text-foreground text-lg font-light mb-3">Données personnelles</h2>
+            <h2 className="text-foreground text-lg font-semibold mb-3">Données personnelles</h2>
             <p>
               Les informations transmises via le formulaire de contact (nom
               d'entreprise, email, téléphone, description du projet) sont
@@ -57,7 +57,7 @@ const MentionsLegales = () => {
           </section>
 
           <section>
-            <h2 className="text-foreground text-lg font-light mb-3">Cookies</h2>
+            <h2 className="text-foreground text-lg font-semibold mb-3">Cookies</h2>
             <p>
               Ce site n'utilise pas de cookies publicitaires. Seules des
               mesures d'audience anonymes peuvent être collectées afin
@@ -66,7 +66,7 @@ const MentionsLegales = () => {
           </section>
 
           <section>
-            <h2 className="text-foreground text-lg font-light mb-3">Propriété intellectuelle</h2>
+            <h2 className="text-foreground text-lg font-semibold mb-3">Propriété intellectuelle</h2>
             <p>
               L'ensemble des contenus de ce site (textes, visuels, créations)
               est la propriété de Netfox. Toute reproduction sans autorisation

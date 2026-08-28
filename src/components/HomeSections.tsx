@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { AdsVisual, CodeVisual, FunnelVisual, SeoVisual } from "@/components/ExpertiseVisuals";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -31,7 +32,7 @@ function FadeUp({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-light">
+    <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-foreground font-medium">
       {children}
     </p>
   );
@@ -77,7 +78,7 @@ const HomeSections = ({
   onShowExamples: () => void;
 }) => {
   const actionClass =
-    "group/link inline-flex items-center gap-2 text-sm font-light text-foreground/85 hover:text-foreground transition-colors duration-300 mt-auto pt-6";
+    "group/link inline-flex items-center gap-2 text-sm font-medium text-foreground/85 hover:text-foreground transition-colors duration-300 mt-auto pt-6";
 
   return (
     <div className="relative" style={{ zIndex: 1 }}>
@@ -89,13 +90,13 @@ const HomeSections = ({
               <SectionLabel>Savoir-faire</SectionLabel>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extralight tracking-tighter text-foreground mt-5 leading-[1.05]">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground mt-5 leading-[1.05]">
                 Notre métier : vous
                 <br className="hidden sm:block" /> apporter des clients.
               </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl mx-auto mt-5">
+              <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
                 Un site, c'est le début. Ce qui compte, c'est ce qu'il
                 rapporte. Quatre expertises, un seul objectif.
               </p>
@@ -105,11 +106,12 @@ const HomeSections = ({
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mt-12 sm:mt-16">
             <FadeUp className="h-full">
               <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+                <CodeVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">01</div>
-                <h3 className="text-xl sm:text-2xl font-light text-foreground mt-4 tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
                   Sites & design
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-3">
+                <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3">
                   Des sites sur mesure au design d'exception, pensés pour
                   inspirer confiance dès la première seconde et transformer la
                   visite en contact.
@@ -123,11 +125,12 @@ const HomeSections = ({
 
             <FadeUp delay={0.1} className="h-full">
               <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+                <AdsVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">02</div>
-                <h3 className="text-xl sm:text-2xl font-light text-foreground mt-4 tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
                   Publicité Google
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-3">
+                <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3">
                   Être positionné tout en haut de Google, au moment exact où un
                   client cherche. Des campagnes pilotées au résultat, avec de
                   vrais rapports.
@@ -141,11 +144,12 @@ const HomeSections = ({
 
             <FadeUp delay={0.15} className="h-full">
               <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+                <SeoVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">03</div>
-                <h3 className="text-xl sm:text-2xl font-light text-foreground mt-4 tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
                   Référencement naturel
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-3">
+                <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3">
                   Être trouvé sur Google par ceux qui cherchent déjà vos
                   services, dans votre zone. SEO technique, local et contenu,
                   intégré dès la conception du site.
@@ -155,11 +159,12 @@ const HomeSections = ({
 
             <FadeUp delay={0.2} className="h-full">
               <article className="h-full flex flex-col rounded-3xl p-7 sm:p-9 text-left" style={cardStyle}>
+                <FunnelVisual />
                 <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">04</div>
-                <h3 className="text-xl sm:text-2xl font-light text-foreground mt-4 tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-semibold text-foreground mt-4 tracking-tight">
                   Tunnels de conversion
                 </h3>
-                <p className="text-muted-foreground text-sm sm:text-[15px] font-light leading-relaxed mt-3">
+                <p className="text-muted-foreground text-[15px] sm:text-base font-normal leading-relaxed mt-3">
                   Pages dédiées, formulaires, suivi des appels et des demandes :
                   un parcours millimétré, de la recherche Google jusqu'à la
                   signature.
@@ -178,12 +183,12 @@ const HomeSections = ({
               <SectionLabel>Méthode</SectionLabel>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-extralight tracking-tighter text-foreground mt-5">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground mt-5">
                 Un accès sur candidature.
               </h2>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light tracking-wide max-w-xl mx-auto mt-5">
+              <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-xl mx-auto mt-5">
                 Pour préserver la qualité de chaque création, un nombre limité
                 de projets est accepté chaque mois.
               </p>
@@ -197,10 +202,10 @@ const HomeSections = ({
                   <div className="text-[11px] tracking-[0.25em] text-muted-foreground/70 font-light">
                     {s.num}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-light text-foreground mt-3 tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-semibold text-foreground mt-3 tracking-tight">
                     {s.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-light leading-relaxed mt-3">
+                  <p className="text-muted-foreground text-[15px] font-normal leading-relaxed mt-3">
                     {s.desc}
                   </p>
                 </div>
@@ -214,12 +219,12 @@ const HomeSections = ({
       <section id="candidature" className="py-28 sm:py-40">
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
           <FadeUp>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extralight tracking-tighter text-foreground">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground">
               Votre vision mérite l'exception.
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <p className="text-muted-foreground text-sm sm:text-base md:text-lg font-light tracking-wide max-w-lg mx-auto mt-6">
+            <p className="text-muted-foreground text-[15px] sm:text-base md:text-lg font-normal max-w-lg mx-auto mt-6">
               Décrivez votre projet. Chaque candidature reçoit une réponse
               personnelle sous 24 h.
             </p>

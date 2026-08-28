@@ -56,7 +56,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="text-muted-foreground text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide max-w-lg mx-auto mt-4 sm:mt-6"
+            className="text-foreground/75 text-sm sm:text-base md:text-lg lg:text-xl font-normal tracking-wide max-w-lg mx-auto mt-4 sm:mt-6"
           >
             La maison digitale qui aide les entreprises à obtenir plus de clients grâce à Internet et aux IA.
           </motion.p>
@@ -86,7 +86,7 @@ const Index = () => {
           >
             <button
               onClick={() => setIsGalleryOpen(true)}
-              className="link-underline text-muted-foreground hover:text-foreground text-xs sm:text-sm font-light tracking-[0.2em] uppercase transition-colors duration-300"
+              className="link-underline text-foreground/60 hover:text-foreground text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-300"
             >
               Voir les réalisations
             </button>
