@@ -114,7 +114,7 @@ export function HeroSearchDemo() {
               </span>
               <span className="text-sm font-semibold text-foreground">votre-entreprise.fr</span>
               <motion.span
-                className="ml-auto inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium text-[#8FD0A0]"
+                className="ml-auto inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium text-[#8FD0A0]"
                 style={{ border: "1px solid rgba(143, 208, 160, 0.35)" }}
                 initial={reduced ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 animate={reduced ? { opacity: 1, scale: 1 } : { opacity: [0, 0, 1, 1], scale: [0.9, 0.9, 1, 1] }}

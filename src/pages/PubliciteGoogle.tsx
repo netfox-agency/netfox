@@ -286,7 +286,7 @@ const PubliciteGoogle = () => {
                     <div className="text-5xl sm:text-6xl font-semibold tracking-tight text-[#8FD0A0] tabular-nums leading-none">
                       <CountUpValue value={r.num} decimals={r.decimals} prefix="×" />
                     </div>
-                    <div className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground mt-4">
+                    <div className="text-xs uppercase tracking-[0.16em] font-medium text-muted-foreground mt-4">
                       Retour sur investissement
                     </div>
                     <div className="text-base font-semibold text-foreground mt-4">{r.name}</div>
